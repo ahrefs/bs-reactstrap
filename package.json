@@ -1,0 +1,21 @@
+{
+  "name": "bs-reactstrap",
+  "version": "0.0.1",
+  "description": "Bucklescript bindings for reactstrap",
+  "main": "index.js",
+  "repository": "git@github.com:ahrefs/bs-reactstrap.git",
+  "author": "Rusty Key <iam@stfoo.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^2.2.3"
+  },
+  "dependencies": {
+    "reactstrap": "^4.8.0",
+    "reason-react": "^0.3.4"
+  },
+  "scripts": {
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  }
+}

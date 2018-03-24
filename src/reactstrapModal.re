@@ -1,0 +1,57 @@
+[@bs.module "reactstrap"] external modal : ReasonReact.reactClass = "Modal";
+
+let make = (
+  ~isOpen=?,
+  ~autoFocus=?,
+  ~centered=?,
+  ~size=?,
+  ~toggle=?,
+  ~role=?,
+  ~labelledBy=?,
+  ~keyboard=?,
+  ~backdrop=?,
+  ~onEnter=?,
+  ~onExit=?,
+  ~onOpened=?,
+  ~onClosed=?,
+  ~className=?,
+  ~wrapClassName=?,
+  ~modalClassName=?,
+  ~backdropClassName=?,
+  ~contentClassName=?,
+  ~fade=?,
+  ~cssModule=?,
+  ~zIndex=?,
+  ~backdropTransition=?,
+  ~modalTransition=?,
+  children
+) =>
+  ReasonReact.wrapJsForReason(
+    ~reactClass=modal,
+    ~props={
+      "isOpen": Js.Nullable.from_opt(isOpen),
+      "autoFocus": Js.Nullable.from_opt(autoFocus),
+      "centered": Js.Nullable.from_opt(centered),
+      "size": Js.Nullable.from_opt(size),
+      "toggle": Js.Nullable.from_opt(toggle),
+      "role": Js.Nullable.from_opt(role),
+      "labelledBy": Js.Nullable.from_opt(labelledBy),
+      "keyboard": Js.Nullable.from_opt(keyboard),
+      "backdrop": Js.Nullable.from_opt(backdrop),
+      "onEnter": Js.Nullable.from_opt(onEnter),
+      "onExit": Js.Nullable.from_opt(onExit),
+      "onOpened": Js.Nullable.from_opt(onOpened),
+      "onClosed": Js.Nullable.from_opt(onClosed),
+      "className": Js.Nullable.from_opt(className),
+      "wrapClassName": Js.Nullable.from_opt(wrapClassName),
+      "modalClassName": Js.Nullable.from_opt(modalClassName),
+      "backdropClassName": Js.Nullable.from_opt(backdropClassName),
+      "contentClassName": Js.Nullable.from_opt(contentClassName),
+      "fade": Js.Nullable.from_opt(fade),
+      "cssModule": Js.Nullable.from_opt(cssModule),
+      "zIndex": Js.Nullable.from_opt(zIndex),
+      "backdropTransition": Js.Nullable.from_opt(backdropTransition),
+      "modalTransition": Js.Nullable.from_opt(modalTransition)
+    },
+    children
+  );
