@@ -10,7 +10,7 @@
     "bs-platform": "^2.2.3"
   },
   "dependencies": {
-    "reactstrap": "^4.8.0",
+    "reactstrap": "^5.0.0-beta.3",
     "reason-react": "^0.3.4"
   },
   "scripts": {
