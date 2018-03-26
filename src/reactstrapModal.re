@@ -1,6 +1,7 @@
 [@bs.module "reactstrap"] external modal : ReasonReact.reactClass = "Modal";
 
-let make = (
+[@bs.obj]
+external makeProps : (
   ~isOpen: option(bool)=?,
   ~autoFocus: option(bool)=?,
   ~centered: option(bool)=?,
@@ -24,34 +25,62 @@ let make = (
   ~zIndex=?,
   ~backdropTransition=?,
   ~modalTransition=?,
+  unit
+) => _ = "";
+
+let make = (
+  ~isOpen=?,
+  ~autoFocus=?,
+  ~centered=?,
+  ~size=?,
+  ~toggle=?,
+  ~role=?,
+  ~labelledBy=?,
+  ~keyboard=?,
+  ~backdrop=?,
+  ~onEnter=?,
+  ~onExit=?,
+  ~onOpened=?,
+  ~onClosed=?,
+  ~className=?,
+  ~wrapClassName=?,
+  ~modalClassName=?,
+  ~backdropClassName=?,
+  ~contentClassName=?,
+  ~fade=?,
+  ~cssModule=?,
+  ~zIndex=?,
+  ~backdropTransition=?,
+  ~modalTransition=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
-    ~props={
-      "isOpen": Js.Nullable.fromOption(isOpen),
-      "autoFocus": Js.Nullable.fromOption(autoFocus),
-      "centered": Js.Nullable.fromOption(centered),
-      "size": Js.Nullable.fromOption(size),
-      "toggle": Js.Nullable.fromOption(toggle),
-      "role": Js.Nullable.fromOption(role),
-      "labelledBy": Js.Nullable.fromOption(labelledBy),
-      "keyboard": Js.Nullable.fromOption(keyboard),
-      "backdrop": Js.Nullable.fromOption(backdrop),
-      "onEnter": Js.Nullable.fromOption(onEnter),
-      "onExit": Js.Nullable.fromOption(onExit),
-      "onOpened": Js.Nullable.fromOption(onOpened),
-      "onClosed": Js.Nullable.fromOption(onClosed),
-      "className": Js.Nullable.fromOption(className),
-      "wrapClassName": Js.Nullable.fromOption(wrapClassName),
-      "modalClassName": Js.Nullable.fromOption(modalClassName),
-      "backdropClassName": Js.Nullable.fromOption(backdropClassName),
-      "contentClassName": Js.Nullable.fromOption(contentClassName),
-      "fade": Js.Nullable.fromOption(fade),
-      "cssModule": Js.Nullable.fromOption(cssModule),
-      "zIndex": Js.Nullable.fromOption(zIndex),
-      "backdropTransition": Js.Nullable.fromOption(backdropTransition),
-      "modalTransition": Js.Nullable.fromOption(modalTransition)
-    },
+    ~props=makeProps(
+      ~isOpen=?,
+      ~autoFocus=?,
+      ~centered=?,
+      ~size=?,
+      ~toggle=?,
+      ~role=?,
+      ~labelledBy=?,
+      ~keyboard=?,
+      ~backdrop=?,
+      ~onEnter=?,
+      ~onExit=?,
+      ~onOpened=?,
+      ~onClosed=?,
+      ~className=?,
+      ~wrapClassName=?,
+      ~modalClassName=?,
+      ~backdropClassName=?,
+      ~contentClassName=?,
+      ~fade=?,
+      ~cssModule=?,
+      ~zIndex=?,
+      ~backdropTransition=?,
+      ~modalTransition=?,
+      ()
+    ),
     children
   );
