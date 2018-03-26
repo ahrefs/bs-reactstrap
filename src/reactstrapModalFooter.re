@@ -9,9 +9,9 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=modalFooter,
     ~props={
-      "tag": Js.Nullable.from_opt(tag),
-      "className": Js.Nullable.from_opt(className),
-      "cssModule": Js.Nullable.from_opt(cssModule)
+      "tag": Js.Nullable.fromOption(tag),
+      "className": Js.Nullable.fromOption(className),
+      "cssModule": Js.Nullable.fromOption(cssModule)
     },
     children
   );

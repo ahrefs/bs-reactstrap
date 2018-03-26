@@ -12,12 +12,12 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=modalHeader,
     ~props={
-      "tag": Js.Nullable.from_opt(tag),
-      "wrapTag": Js.Nullable.from_opt(wrapTag),
-      "toggle": Js.Nullable.from_opt(toggle),
-      "className": Js.Nullable.from_opt(className),
-      "cssModule": Js.Nullable.from_opt(cssModule),
-      "closeAriaLabel": Js.Nullable.from_opt(closeAriaLabel)
+      "tag": Js.Nullable.fromOption(tag),
+      "wrapTag": Js.Nullable.fromOption(wrapTag),
+      "toggle": Js.Nullable.fromOption(toggle),
+      "className": Js.Nullable.fromOption(className),
+      "cssModule": Js.Nullable.fromOption(cssModule),
+      "closeAriaLabel": Js.Nullable.fromOption(closeAriaLabel)
     },
     children
   );
