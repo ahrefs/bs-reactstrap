@@ -2,7 +2,7 @@
 
 let make = (
   ~tag=?,
-  ~className=?,
+  ~className: option(string)=?,
   ~cssModule=?,
   children
 ) =>

@@ -4,9 +4,9 @@ let make = (
   ~tag=?,
   ~wrapTag=?,
   ~toggle=?,
-  ~className=?,
+  ~className: option(string)=?,
   ~cssModule=?,
-  ~closeAriaLabel=?,
+  ~closeAriaLabel: option(string)=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
