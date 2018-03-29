@@ -1,17 +1,26 @@
 [@bs.module "reactstrap"] external modalBody : ReasonReact.reactClass = "ModalBody";
 
+[@bs.obj]
+external makeProps : (
+  ~tag: 'a=?,
+  ~className: string=?,
+  ~cssModule: 'b=?,
+  unit
+) => _ = "";
+
 let make = (
   ~tag=?,
-  ~className: option(string)=?,
+  ~className=?,
   ~cssModule=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modalBody,
-    ~props={
-      "tag": Js.Nullable.fromOption(tag),
-      "className": Js.Nullable.fromOption(className),
-      "cssModule": Js.Nullable.fromOption(cssModule)
-    },
+    ~props=makeProps(
+      ~tag?,
+      ~className?,
+      ~cssModule?,
+      ()
+    ),
     children
   );

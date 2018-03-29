@@ -1,23 +1,35 @@
 [@bs.module "reactstrap"] external modalHeader : ReasonReact.reactClass = "ModalHeader";
 
+[@bs.obj]
+external makeProps : (
+  ~tag: 'a=?,
+  ~wrapTag: 'b=?,
+  ~toggle: 'c=?,
+  ~className: string=?,
+  ~cssModule: 'd=?,
+  ~closeAriaLabel: string=?,
+  unit
+) => _ = "";
+
 let make = (
   ~tag=?,
   ~wrapTag=?,
   ~toggle=?,
-  ~className: option(string)=?,
+  ~className=?,
   ~cssModule=?,
-  ~closeAriaLabel: option(string)=?,
+  ~closeAriaLabel=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modalHeader,
-    ~props={
-      "tag": Js.Nullable.fromOption(tag),
-      "wrapTag": Js.Nullable.fromOption(wrapTag),
-      "toggle": Js.Nullable.fromOption(toggle),
-      "className": Js.Nullable.fromOption(className),
-      "cssModule": Js.Nullable.fromOption(cssModule),
-      "closeAriaLabel": Js.Nullable.fromOption(closeAriaLabel)
-    },
+    ~props=makeProps(
+      ~tag?,
+      ~wrapTag?,
+      ~toggle?,
+      ~className?,
+      ~cssModule?,
+      ~closeAriaLabel?,
+      ()
+    ),
     children
   );
