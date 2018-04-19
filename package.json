@@ -1,7 +1,7 @@
 {
   "name": "bs-reactstrap",
   "namespace": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Bucklescript bindings for reactstrap",
   "repository": "git@github.com:ahrefs/bs-reactstrap.git",
   "author": "Rusty Key <iam@stfoo.ru>",
