@@ -1,5 +1,6 @@
 {
   "name": "bs-reactstrap",
+  "namespace": true,
   "sources": [{
     "dir": "src",
     "subdirs": true
