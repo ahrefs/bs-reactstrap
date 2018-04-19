@@ -1,37 +1,31 @@
-[@bs.module "reactstrap"] external modalHeader : ReasonReact.reactClass = "ModalHeader";
+[@bs.module "reactstrap"] external navbarToggler : ReasonReact.reactClass = "NavbarToggler";
 
 [@bs.obj]
 external makeProps : (
   ~tag: 'a=?,
-  ~wrapTag: 'b=?,
-  ~toggle: 'c=?,
+  ~type: string=?,
   ~className: string=?,
-  ~cssModule: 'd=?,
-  ~children: 'e=?,
-  ~closeAriaLabel: string=?,
+  ~cssModule: 'b=?,
+  ~children: 'c=?,
   unit
 ) => _ = "";
 
 let make = (
   ~tag=?,
-  ~wrapTag=?,
-  ~toggle=?,
+  ~type=?,
   ~className=?,
   ~cssModule=?,
   ~children=?,
-  ~closeAriaLabel=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=modalHeader,
+    ~reactClass=navbarToggler,
     ~props=makeProps(
       ~tag?,
-      ~wrapTag?,
-      ~toggle?,
+      ~type?,
       ~className?,
       ~cssModule?,
       ~children?,
-      ~closeAriaLabel?,
       ()
     ),
     children
