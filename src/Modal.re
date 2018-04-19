@@ -1,19 +1,15 @@
 [@bs.module "reactstrap"] external modal : ReasonReact.reactClass = "Modal";
 
-let jsBoolFromOpt = (var: option(bool)) => {
-  Js.Option.map([@bs] (b => Js.Boolean.to_js_boolean(b)), var)
-};
-
 [@bs.obj]
 external makeProps : (
-  ~isOpen: Js.boolean=?,
-  ~autoFocus: Js.boolean=?,
-  ~centered: Js.boolean=?,
+  ~isOpen: bool=?,
+  ~autoFocus: bool=?,
+  ~centered: bool=?,
   ~size: string=?,
   ~toggle: 'a=?,
   ~role: string=?,
   ~labelledBy: string=?,
-  ~keyboard: Js.boolean=?,
+  ~keyboard: bool=?,
   ~backdrop: 'b=?,
   ~onEnter: 'c=?,
   ~onExit: 'd=?,
@@ -24,7 +20,7 @@ external makeProps : (
   ~modalClassName: string=?,
   ~backdropClassName: string=?,
   ~contentClassName: string=?,
-  ~fade: Js.boolean=?,
+  ~fade: bool=?,
   ~cssModule: 'g=?,
   ~zIndex: 'h=?,
   ~backdropTransition: 'i=?,
@@ -61,14 +57,14 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props=makeProps(
-      ~isOpen=?jsBoolFromOpt(isOpen),
-      ~autoFocus=?jsBoolFromOpt(autoFocus),
-      ~centered=?jsBoolFromOpt(centered),
+      ~isOpen?,
+      ~autoFocus?,
+      ~centered?,
       ~size?,
       ~toggle?,
       ~role?,
       ~labelledBy?,
-      ~keyboard=?jsBoolFromOpt(keyboard),
+      ~keyboard?,
       ~backdrop?,
       ~onEnter?,
       ~onExit?,
@@ -79,7 +75,7 @@ let make = (
       ~modalClassName?,
       ~backdropClassName?,
       ~contentClassName?,
-      ~fade=?jsBoolFromOpt(fade),
+      ~fade?,
       ~cssModule?,
       ~zIndex?,
       ~backdropTransition?,
