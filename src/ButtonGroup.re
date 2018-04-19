@@ -3,7 +3,7 @@
 [@bs.obj]
 external makeProps : (
   ~tag: 'a=?,
-  ~aria-label: string=?,
+  ~ariaLabel: string=?,
   ~className: string=?,
   ~cssModule: 'b=?,
   ~role: string=?,
@@ -14,7 +14,7 @@ external makeProps : (
 
 let make = (
   ~tag=?,
-  ~aria-label=?,
+  ~ariaLabel=?,
   ~className=?,
   ~cssModule=?,
   ~role=?,
@@ -26,7 +26,7 @@ let make = (
     ~reactClass=buttonGroup,
     ~props=makeProps(
       ~tag?,
-      ~aria-label?,
+      ~ariaLabel?,
       ~className?,
       ~cssModule?,
       ~role?,

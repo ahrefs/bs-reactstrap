@@ -2,21 +2,19 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
   ~active: bool=?,
   ~disabled: bool=?,
   ~divider: bool=?,
-  ~tag: 'b=?,
+  ~tag: 'a=?,
   ~header: bool=?,
-  ~onClick: 'c=?,
+  ~onClick: 'b=?,
   ~className: string=?,
-  ~cssModule: 'd=?,
+  ~cssModule: 'c=?,
   ~toggle: bool=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~active=?,
   ~disabled=?,
   ~divider=?,
@@ -31,7 +29,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=dropdownItem,
     ~props=makeProps(
-      ~children?,
       ~active?,
       ~disabled?,
       ~divider?,

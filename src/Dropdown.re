@@ -13,9 +13,8 @@ external makeProps : (
   ~size: string=?,
   ~tag: string=?,
   ~toggle: 'd=?,
-  ~children: 'e=?,
   ~className: string=?,
-  ~cssModule: 'f=?,
+  ~cssModule: 'e=?,
   ~inNavbar: bool=?,
   unit
 ) => _ = "";
@@ -32,7 +31,6 @@ let make = (
   ~size=?,
   ~tag=?,
   ~toggle=?,
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   ~inNavbar=?,
@@ -52,7 +50,6 @@ let make = (
       ~size?,
       ~tag?,
       ~toggle?,
-      ~children?,
       ~className?,
       ~cssModule?,
       ~inNavbar?,

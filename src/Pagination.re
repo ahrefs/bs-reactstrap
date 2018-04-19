@@ -2,16 +2,14 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
   ~className: string=?,
-  ~cssModule: 'b=?,
+  ~cssModule: 'a=?,
   ~size: string=?,
-  ~tag: 'c=?,
+  ~tag: 'b=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   ~size=?,
@@ -21,7 +19,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=pagination,
     ~props=makeProps(
-      ~children?,
       ~className?,
       ~cssModule?,
       ~size?,

@@ -3,18 +3,16 @@
 [@bs.obj]
 external makeProps : (
   ~tag: string=?,
-  ~children: 'a,
   ~right: bool=?,
   ~flip: bool=?,
-  ~modifiers: 'b=?,
+  ~modifiers: 'a=?,
   ~className: string=?,
-  ~cssModule: 'c=?,
+  ~cssModule: 'b=?,
   unit
 ) => _ = "";
 
 let make = (
   ~tag=?,
-  ~children,
   ~right=?,
   ~flip=?,
   ~modifiers=?,
@@ -26,7 +24,6 @@ let make = (
     ~reactClass=dropdownMenu,
     ~props=makeProps(
       ~tag?,
-      ~children,
       ~right?,
       ~flip?,
       ~modifiers?,

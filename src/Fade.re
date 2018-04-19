@@ -2,17 +2,15 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
-  ~tag: 'b=?,
+  ~tag: 'a=?,
   ~baseClass: string=?,
   ~baseClassActive: string=?,
   ~className: string=?,
-  ~cssModule: 'c=?,
+  ~cssModule: 'b=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~tag=?,
   ~baseClass=?,
   ~baseClassActive=?,
@@ -23,7 +21,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=fade,
     ~props=makeProps(
-      ~children?,
       ~tag?,
       ~baseClass?,
       ~baseClassActive?,

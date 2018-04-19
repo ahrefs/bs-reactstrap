@@ -2,26 +2,24 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
-  ~type: string=?,
+  ~type_: string=?,
   ~size: string=?,
   ~bsSize: string=?,
-  ~state: 'b=?,
+  ~state: 'a=?,
   ~valid: bool=?,
   ~invalid: bool=?,
-  ~tag: 'c=?,
-  ~innerRef: 'd=?,
-  ~static: 'e=?,
+  ~tag: 'b=?,
+  ~innerRef: 'c=?,
+  ~static: 'd=?,
   ~plaintext: bool=?,
   ~addon: bool=?,
   ~className: string=?,
-  ~cssModule: 'f=?,
+  ~cssModule: 'e=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
-  ~type=?,
+  ~type_=?,
   ~size=?,
   ~bsSize=?,
   ~state=?,
@@ -39,8 +37,7 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=input,
     ~props=makeProps(
-      ~children?,
-      ~type?,
+      ~type_?,
       ~size?,
       ~bsSize?,
       ~state?,

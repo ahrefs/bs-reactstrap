@@ -2,19 +2,17 @@
 
 [@bs.obj]
 external makeProps : (
-  ~aria-label: string=?,
-  ~children: 'a=?,
+  ~ariaLabel: string=?,
   ~className: string=?,
-  ~cssModule: 'b=?,
+  ~cssModule: 'a=?,
   ~next: bool=?,
   ~previous: bool=?,
-  ~tag: 'c=?,
+  ~tag: 'b=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~aria-label=?,
-  ~children=?,
+  ~ariaLabel=?,
   ~className=?,
   ~cssModule=?,
   ~next=?,
@@ -25,8 +23,7 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=paginationLink,
     ~props=makeProps(
-      ~aria-label?,
-      ~children?,
+      ~ariaLabel?,
       ~className?,
       ~cssModule?,
       ~next?,

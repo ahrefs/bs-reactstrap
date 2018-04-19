@@ -2,16 +2,14 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
   ~tag: string=?,
   ~className: string=?,
-  ~cssModule: 'b=?,
+  ~cssModule: 'a=?,
   ~valid: bool=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~tag=?,
   ~className=?,
   ~cssModule=?,
@@ -21,7 +19,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=formFeedback,
     ~props=makeProps(
-      ~children?,
       ~tag?,
       ~className?,
       ~cssModule?,

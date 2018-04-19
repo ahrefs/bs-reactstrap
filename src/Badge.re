@@ -5,9 +5,8 @@ external makeProps : (
   ~color: string=?,
   ~pill: bool=?,
   ~tag: 'a=?,
-  ~children: 'b=?,
   ~className: string=?,
-  ~cssModule: 'c=?,
+  ~cssModule: 'b=?,
   unit
 ) => _ = "";
 
@@ -15,7 +14,6 @@ let make = (
   ~color=?,
   ~pill=?,
   ~tag=?,
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   children
@@ -26,7 +24,6 @@ let make = (
       ~color?,
       ~pill?,
       ~tag?,
-      ~children?,
       ~className?,
       ~cssModule?,
       ()

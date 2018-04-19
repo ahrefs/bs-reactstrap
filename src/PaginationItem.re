@@ -3,17 +3,15 @@
 [@bs.obj]
 external makeProps : (
   ~active: bool=?,
-  ~children: 'a=?,
   ~className: string=?,
-  ~cssModule: 'b=?,
+  ~cssModule: 'a=?,
   ~disabled: bool=?,
-  ~tag: 'c=?,
+  ~tag: 'b=?,
   unit
 ) => _ = "";
 
 let make = (
   ~active=?,
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   ~disabled=?,
@@ -24,7 +22,6 @@ let make = (
     ~reactClass=paginationItem,
     ~props=makeProps(
       ~active?,
-      ~children?,
       ~className?,
       ~cssModule?,
       ~disabled?,

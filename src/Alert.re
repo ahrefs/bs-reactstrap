@@ -2,21 +2,19 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
   ~className: string=?,
   ~closeClassName: string=?,
   ~closeAriaLabel: string=?,
-  ~cssModule: 'b=?,
+  ~cssModule: 'a=?,
   ~color: string=?,
   ~isOpen: bool=?,
-  ~toggle: 'c=?,
-  ~tag: 'd=?,
-  ~transition: 'e=?,
+  ~toggle: 'b=?,
+  ~tag: 'c=?,
+  ~transition: 'd=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~className=?,
   ~closeClassName=?,
   ~closeAriaLabel=?,
@@ -31,7 +29,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=alert,
     ~props=makeProps(
-      ~children?,
       ~className?,
       ~closeClassName?,
       ~closeAriaLabel?,

@@ -4,16 +4,14 @@
 external makeProps : (
   ~tag: 'a=?,
   ~addonType: 'b,
-  ~children: 'c=?,
   ~className: string=?,
-  ~cssModule: 'd=?,
+  ~cssModule: 'c=?,
   unit
 ) => _ = "";
 
 let make = (
   ~tag=?,
   ~addonType,
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   children
@@ -23,7 +21,6 @@ let make = (
     ~props=makeProps(
       ~tag?,
       ~addonType,
-      ~children?,
       ~className?,
       ~cssModule?,
       ()

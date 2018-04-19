@@ -7,7 +7,6 @@ external makeProps : (
   ~toggle: 'c=?,
   ~className: string=?,
   ~cssModule: 'd=?,
-  ~children: 'e=?,
   ~closeAriaLabel: string=?,
   unit
 ) => _ = "";
@@ -18,7 +17,6 @@ let make = (
   ~toggle=?,
   ~className=?,
   ~cssModule=?,
-  ~children=?,
   ~closeAriaLabel=?,
   children
 ) =>
@@ -30,7 +28,6 @@ let make = (
       ~toggle?,
       ~className?,
       ~cssModule?,
-      ~children?,
       ~closeAriaLabel?,
       ()
     ),

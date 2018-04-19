@@ -11,9 +11,8 @@ external makeProps : (
   ~innerRef: 'b=?,
   ~onClick: 'c=?,
   ~size: string=?,
-  ~children: 'd=?,
   ~className: string=?,
-  ~cssModule: 'e=?,
+  ~cssModule: 'd=?,
   unit
 ) => _ = "";
 
@@ -27,7 +26,6 @@ let make = (
   ~innerRef=?,
   ~onClick=?,
   ~size=?,
-  ~children=?,
   ~className=?,
   ~cssModule=?,
   children
@@ -44,7 +42,6 @@ let make = (
       ~innerRef?,
       ~onClick?,
       ~size?,
-      ~children?,
       ~className?,
       ~cssModule?,
       ()

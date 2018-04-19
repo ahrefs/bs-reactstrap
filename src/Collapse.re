@@ -3,17 +3,15 @@
 [@bs.obj]
 external makeProps : (
   ~isOpen: bool=?,
-  ~children: 'a=?,
-  ~tag: 'b=?,
-  ~className: 'c=?,
+  ~tag: 'a=?,
+  ~className: 'b=?,
   ~navbar: bool=?,
-  ~cssModule: 'd=?,
+  ~cssModule: 'c=?,
   unit
 ) => _ = "";
 
 let make = (
   ~isOpen=?,
-  ~children=?,
   ~tag=?,
   ~className=?,
   ~navbar=?,
@@ -24,7 +22,6 @@ let make = (
     ~reactClass=collapse,
     ~props=makeProps(
       ~isOpen?,
-      ~children?,
       ~tag?,
       ~className?,
       ~navbar?,

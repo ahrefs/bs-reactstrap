@@ -2,25 +2,23 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a,
   ~className: string=?,
   ~placement: string=?,
   ~placementPrefix: string=?,
   ~hideArrow: bool=?,
   ~tag: string=?,
   ~isOpen: bool,
-  ~cssModule: 'b=?,
-  ~offset: 'c=?,
-  ~fallbackPlacement: 'd=?,
+  ~cssModule: 'a=?,
+  ~offset: 'b=?,
+  ~fallbackPlacement: 'c=?,
   ~flip: bool=?,
-  ~container: 'e=?,
-  ~target: 'f,
-  ~modifiers: 'g=?,
+  ~container: 'd=?,
+  ~target: 'e,
+  ~modifiers: 'f=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children,
   ~className=?,
   ~placement=?,
   ~placementPrefix=?,
@@ -39,7 +37,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=popperContent,
     ~props=makeProps(
-      ~children,
       ~className?,
       ~placement?,
       ~placementPrefix?,

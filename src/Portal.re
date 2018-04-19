@@ -2,20 +2,17 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a,
-  ~node: 'b=?,
+  ~node: 'a=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children,
   ~node=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=portal,
     ~props=makeProps(
-      ~children,
       ~node?,
       ()
     ),

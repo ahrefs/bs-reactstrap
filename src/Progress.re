@@ -2,23 +2,21 @@
 
 [@bs.obj]
 external makeProps : (
-  ~children: 'a=?,
   ~bar: bool=?,
   ~multi: bool=?,
   ~tag: string=?,
-  ~value: 'b=?,
-  ~max: 'c=?,
+  ~value: 'a=?,
+  ~max: 'b=?,
   ~animated: bool=?,
   ~striped: bool=?,
   ~color: string=?,
   ~className: string=?,
   ~barClassName: string=?,
-  ~cssModule: 'd=?,
+  ~cssModule: 'c=?,
   unit
 ) => _ = "";
 
 let make = (
-  ~children=?,
   ~bar=?,
   ~multi=?,
   ~tag=?,
@@ -35,7 +33,6 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=progress,
     ~props=makeProps(
-      ~children?,
       ~bar?,
       ~multi?,
       ~tag?,

@@ -3,29 +3,26 @@
 [@bs.obj]
 external makeProps : (
   ~tag: 'a=?,
-  ~type: string=?,
+  ~type_: string=?,
   ~className: string=?,
   ~cssModule: 'b=?,
-  ~children: 'c=?,
   unit
 ) => _ = "";
 
 let make = (
   ~tag=?,
-  ~type=?,
+  ~type_=?,
   ~className=?,
   ~cssModule=?,
-  ~children=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=navbarToggler,
     ~props=makeProps(
       ~tag?,
-      ~type?,
+      ~type_?,
       ~className?,
       ~cssModule?,
-      ~children?,
       ()
     ),
     children
