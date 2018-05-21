@@ -5,6 +5,7 @@ external makeProps : (
   ~tag: 'a=?,
   ~className: string=?,
   ~cssModule: 'b=?,
+  ~href: string=?,
   unit
 ) => _ = "";
 
@@ -12,6 +13,7 @@ let make = (
   ~tag=?,
   ~className=?,
   ~cssModule=?,
+  ~href=?,
   children
 ) =>
   ReasonReact.wrapJsForReason(
@@ -20,6 +22,7 @@ let make = (
       ~tag?,
       ~className?,
       ~cssModule?,
+      ~href?,
       ()
     ),
     children
