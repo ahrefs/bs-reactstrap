@@ -1,6 +1,5 @@
 {
   "name": "@ahrefs/bs-reactstrap",
-  "namespace": true,
   "sources": [
     {
       "dir": "src",
