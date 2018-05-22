@@ -1,20 +1,15 @@
 {
-  "name": "bs-reactstrap",
-  "version": "0.1.2",
+  "name": "@ahrefs/bs-reactstrap",
+  "version": "0.2.0",
   "description": "Bucklescript bindings for Reactstrap",
   "homepage": "https://github.com/ahrefs/bs-reactstrap#readme",
   "repository": "git@github.com:ahrefs/bs-reactstrap.git",
   "bugs": {
     "url": "https://github.com/ahrefs/bs-reactstrap/issues"
   },
-  "author": "Rusty Key <iam@stfoo.ru>",
+  "author": "ahrefs",
   "license": "MIT",
-  "keywords": [
-    "bucklescript",
-    "reactstrap",
-    "bootstrap",
-    "binding"
-  ],
+  "keywords": ["bucklescript", "reactstrap", "bootstrap", "binding"],
   "devDependencies": {
     "bs-platform": "^3.0.0"
   },

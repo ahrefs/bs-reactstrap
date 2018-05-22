@@ -1,13 +1,13 @@
 {
-  "name": "bs-reactstrap",
+  "name": "@ahrefs/bs-reactstrap",
   "namespace": true,
-  "sources": [{
-    "dir": "src",
-    "subdirs": true
-  }],
-  "bs-dependencies": [
-    "reason-react"
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
   ],
+  "bs-dependencies": ["reason-react"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true
@@ -16,8 +16,6 @@
     "react-jsx": 2
   },
   "suffix": ".bs.js",
-  "bsc-flags": [
-    "-bs-super-errors"
-  ],
+  "bsc-flags": ["-bs-super-errors"],
   "refmt": 3
 }
