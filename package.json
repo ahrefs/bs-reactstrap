@@ -9,7 +9,18 @@
   },
   "author": "ahrefs",
   "license": "MIT",
-  "keywords": ["bucklescript", "reactstrap", "bootstrap", "binding"],
+  "keywords": [
+    "reactstrap",
+    "bootstrap",
+    "react",
+    "component",
+    "components",
+    "react-component",
+    "ui",
+    "bucklescript",
+    "binding",
+    "reasonml"
+  ],
   "devDependencies": {
     "bs-platform": "^3.0.0"
   },
