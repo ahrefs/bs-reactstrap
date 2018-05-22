@@ -12,7 +12,7 @@ yarn add @ahrefs/bs-reactstrap
 
 # Setup
 
-Add `@ahrefs/bs-reactstrap` to bs-depenencies in your bs-config.json!
+Add `@ahrefs/bs-reactstrap` to `bs-depenencies` in your `bsconfig.json`!
 
 ```js
 {
