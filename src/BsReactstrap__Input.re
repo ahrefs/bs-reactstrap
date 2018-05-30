@@ -2,7 +2,7 @@
 
 [@bs.obj]
 external makeProps : (
-  ~type_: string=?,
+  ~_type: string=?,
   ~size: string=?,
   ~bsSize: string=?,
   ~state: 'a=?,
@@ -19,7 +19,7 @@ external makeProps : (
 ) => _ = "";
 
 let make = (
-  ~type_=?,
+  ~_type=?,
   ~size=?,
   ~bsSize=?,
   ~state=?,
@@ -37,7 +37,7 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=input,
     ~props=makeProps(
-      ~type_?,
+      ~_type?,
       ~size?,
       ~bsSize?,
       ~state?,
