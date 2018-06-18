@@ -1,20 +1,12 @@
-[@bs.module "reactstrap"] external buttonDropdown : ReasonReact.reactClass = "ButtonDropdown";
+[@bs.module "reactstrap"]
+external buttonDropdown : ReasonReact.reactClass = "ButtonDropdown";
 
 [@bs.obj]
-external makeProps : (
+external makeProps : (~isOpen: bool=?, ~toggle: 'a=?, unit) => _ = "";
 
-  unit
-) => _ = "";
-
-let make = (
-
-  children
-) =>
+let make = (~isOpen=?, ~toggle=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=buttonDropdown,
-    ~props=makeProps(
-
-      ()
-    ),
-    children
+    ~props=makeProps(~isOpen?, ~toggle?, ()),
+    children,
   );
