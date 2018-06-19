@@ -2,7 +2,8 @@
 external buttonDropdown : ReasonReact.reactClass = "ButtonDropdown";
 
 [@bs.obj]
-external makeProps : (~isOpen: bool=?, ~toggle: unit => unit=?, unit) => _ =
+external makeProps :
+  (~isOpen: bool=?, ~toggle: ReactEventRe.Mouse.t => unit=?, unit) => _ =
   "";
 
 let make = (~isOpen=?, ~toggle=?, children) =>
