@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external input : ReasonReact.reactClass = "Input";
 
 type type_;
@@ -21,7 +23,7 @@ type props = {
   [@bs.optional]
   invalid: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   innerRef,
   [@bs.optional]
@@ -33,7 +35,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make =

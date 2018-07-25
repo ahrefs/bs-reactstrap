@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external formText : ReasonReact.reactClass = "FormText";
 
@@ -6,13 +8,13 @@ type props = {
   [@bs.optional]
   inline: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   color: string,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make = (~inline=?, ~tag=?, ~color=?, ~className=?, ~cssModule=?, children) =>

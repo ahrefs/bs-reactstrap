@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external tooltip : ReasonReact.reactClass = "Tooltip";
 
@@ -26,7 +28,7 @@ type props = {
   [@bs.optional]
   innerClassName: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   toggle,
   [@bs.optional]

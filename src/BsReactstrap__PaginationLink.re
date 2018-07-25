@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external paginationLink : ReasonReact.reactClass = "PaginationLink";
 
@@ -8,13 +10,13 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   next: bool,
   [@bs.optional]
   previous: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
 };
 
 let make =

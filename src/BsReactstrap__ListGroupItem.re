@@ -1,10 +1,12 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external listGroupItem : ReasonReact.reactClass = "ListGroupItem";
 
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   active: bool,
   [@bs.optional]
@@ -16,7 +18,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make =

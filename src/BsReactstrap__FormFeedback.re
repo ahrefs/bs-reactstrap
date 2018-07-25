@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external formFeedback : ReasonReact.reactClass = "FormFeedback";
 
@@ -8,7 +10,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   valid: bool,
 };

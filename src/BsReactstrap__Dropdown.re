@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external dropdown : ReasonReact.reactClass = "Dropdown";
 
@@ -33,7 +35,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   inNavbar: bool,
 };

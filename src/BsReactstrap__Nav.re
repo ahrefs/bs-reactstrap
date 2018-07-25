@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external nav : ReasonReact.reactClass = "Nav";
 
 type vertical;
@@ -21,11 +23,11 @@ type props = {
   [@bs.optional]
   card: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make =

@@ -1,16 +1,18 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external navbarToggler : ReasonReact.reactClass = "NavbarToggler";
 
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional] [@bs.as "type"]
   type_: string,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make = (~tag=?, ~type_=?, ~className=?, ~cssModule=?, children) =>

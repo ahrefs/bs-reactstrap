@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external modal : ReasonReact.reactClass = "Modal";
 
 type toggle;
@@ -56,7 +58,7 @@ type props = {
   [@bs.optional]
   fade: bool,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   zIndex,
   [@bs.optional]

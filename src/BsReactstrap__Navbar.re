@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external navbar : ReasonReact.reactClass = "Navbar";
 
 type inverse;
@@ -23,11 +25,11 @@ type props = {
   [@bs.optional]
   role: string,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   toggleable,
   [@bs.optional]

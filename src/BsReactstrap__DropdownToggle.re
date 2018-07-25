@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external dropdownToggle : ReasonReact.reactClass = "DropdownToggle";
 
@@ -12,7 +14,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   disabled: bool,
   [@bs.optional]
@@ -22,7 +24,7 @@ type props = {
   [@bs.optional]
   split: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   nav: bool,
 };

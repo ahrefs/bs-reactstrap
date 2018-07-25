@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external modalHeader : ReasonReact.reactClass = "ModalHeader";
 
@@ -7,7 +9,7 @@ type wrapTag;
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   wrapTag,
   [@bs.optional]
@@ -15,7 +17,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   closeAriaLabel: string,
 };

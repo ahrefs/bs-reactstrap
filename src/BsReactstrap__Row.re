@@ -1,15 +1,17 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external row : ReasonReact.reactClass = "Row";
 
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   noGutters: bool,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make = (~tag=?, ~noGutters=?, ~className=?, ~cssModule=?, children) =>

@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external popperContent : ReasonReact.reactClass = "PopperContent";
 
@@ -21,7 +23,7 @@ type props = {
   tag: string,
   isOpen: bool,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   offset,
   [@bs.optional]

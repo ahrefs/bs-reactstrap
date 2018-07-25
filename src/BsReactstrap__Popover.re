@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external popover : ReasonReact.reactClass = "Popover";
 
@@ -28,7 +30,7 @@ type props = {
   [@bs.optional]
   placementPrefix: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   toggle,
   [@bs.optional]

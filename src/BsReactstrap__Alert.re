@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external alert : ReasonReact.reactClass = "Alert";
 
 type toggle;
@@ -12,7 +14,7 @@ type props = {
   [@bs.optional]
   closeAriaLabel: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   color: string,
   [@bs.optional]
@@ -20,7 +22,7 @@ type props = {
   [@bs.optional]
   toggle,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   transition,
 };

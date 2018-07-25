@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external form : ReasonReact.reactClass = "Form";
 
 type innerRef;
@@ -7,13 +9,13 @@ type props = {
   [@bs.optional]
   inline: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   innerRef,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make =

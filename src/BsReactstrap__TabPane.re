@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external tabPane : ReasonReact.reactClass = "TabPane";
 
@@ -6,11 +8,11 @@ type tabId;
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   tabId,
 };

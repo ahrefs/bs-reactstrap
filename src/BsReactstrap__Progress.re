@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external progress : ReasonReact.reactClass = "Progress";
 
@@ -27,7 +29,7 @@ type props = {
   [@bs.optional]
   barClassName: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make =

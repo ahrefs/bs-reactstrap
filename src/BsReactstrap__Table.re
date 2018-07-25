@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external table : ReasonReact.reactClass = "Table";
 
 type inverse;
@@ -9,7 +11,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   size: string,
   [@bs.optional]
@@ -27,7 +29,7 @@ type props = {
   [@bs.optional]
   responsive,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   responsiveTag,
 };

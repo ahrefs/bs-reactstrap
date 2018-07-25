@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external navLink : ReasonReact.reactClass = "NavLink";
 
@@ -8,7 +10,7 @@ type innerRef;
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   innerRef,
   [@bs.optional]
@@ -18,7 +20,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   onClick,
   [@bs.optional]

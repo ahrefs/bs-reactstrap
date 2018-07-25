@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external badge : ReasonReact.reactClass = "Badge";
 
 [@bs.deriving abstract]
@@ -7,11 +9,11 @@ type props = {
   [@bs.optional]
   pill: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
 };
 
 let make = (~color=?, ~pill=?, ~tag=?, ~className=?, ~cssModule=?, children) =>

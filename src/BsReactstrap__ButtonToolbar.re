@@ -1,16 +1,18 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external buttonToolbar : ReasonReact.reactClass = "ButtonToolbar";
 
 [@bs.deriving abstract]
 type props = {
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   ariaLabel: string,
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   role: string,
 };

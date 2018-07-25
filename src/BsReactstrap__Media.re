@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external media : ReasonReact.reactClass = "Media";
 
 [@bs.deriving abstract]
@@ -9,7 +11,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   heading: bool,
   [@bs.optional]
@@ -23,7 +25,7 @@ type props = {
   [@bs.optional]
   right: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   top: bool,
 };

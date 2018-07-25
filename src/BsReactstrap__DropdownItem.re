@@ -1,3 +1,5 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"]
 external dropdownItem : ReasonReact.reactClass = "DropdownItem";
 type onClick;
@@ -11,7 +13,7 @@ type props = {
   [@bs.optional]
   divider: bool,
   [@bs.optional]
-  tag: BsReactstrap__Props.tag,
+  tag,
   [@bs.optional]
   header: bool,
   [@bs.optional]
@@ -19,7 +21,7 @@ type props = {
   [@bs.optional]
   className: string,
   [@bs.optional]
-  cssModule: BsReactstrap__Props.cssModule,
+  cssModule,
   [@bs.optional]
   toggle: bool,
 };
