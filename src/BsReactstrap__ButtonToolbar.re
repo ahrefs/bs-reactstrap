@@ -1,32 +1,26 @@
-[@bs.module "reactstrap"] external buttonToolbar : ReasonReact.reactClass = "ButtonToolbar";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~ariaLabel: string=?,
-  ~className: string=?,
-  ~cssModule: 'b=?,
-  ~role: string=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external buttonToolbar : ReasonReact.reactClass = "ButtonToolbar";
 
-let make = (
-  ~tag=?,
-  ~ariaLabel=?,
-  ~className=?,
-  ~cssModule=?,
-  ~role=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  ariaLabel: string,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  role: string,
+};
+
+let make =
+    (~tag=?, ~ariaLabel=?, ~className=?, ~cssModule=?, ~role=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=buttonToolbar,
-    ~props=makeProps(
-      ~tag?,
-      ~ariaLabel?,
-      ~className?,
-      ~cssModule?,
-      ~role?,
-      ()
-    ),
-    children
+    ~props=props(~tag?, ~ariaLabel?, ~className?, ~cssModule?, ~role?, ()),
+    children,
   );

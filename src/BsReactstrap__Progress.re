@@ -1,50 +1,68 @@
-[@bs.module "reactstrap"] external progress : ReasonReact.reactClass = "Progress";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~bar: bool=?,
-  ~multi: bool=?,
-  ~tag: string=?,
-  ~value: 'a=?,
-  ~max: 'b=?,
-  ~animated: bool=?,
-  ~striped: bool=?,
-  ~color: string=?,
-  ~className: string=?,
-  ~barClassName: string=?,
-  ~cssModule: 'c=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external progress : ReasonReact.reactClass = "Progress";
 
-let make = (
-  ~bar=?,
-  ~multi=?,
-  ~tag=?,
-  ~value=?,
-  ~max=?,
-  ~animated=?,
-  ~striped=?,
-  ~color=?,
-  ~className=?,
-  ~barClassName=?,
-  ~cssModule=?,
-  children
-) =>
+type value;
+type max;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  bar: bool,
+  [@bs.optional]
+  multi: bool,
+  [@bs.optional]
+  tag: string,
+  [@bs.optional]
+  value,
+  [@bs.optional]
+  max,
+  [@bs.optional]
+  animated: bool,
+  [@bs.optional]
+  striped: bool,
+  [@bs.optional]
+  color: string,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  barClassName: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make =
+    (
+      ~bar=?,
+      ~multi=?,
+      ~tag=?,
+      ~value=?,
+      ~max=?,
+      ~animated=?,
+      ~striped=?,
+      ~color=?,
+      ~className=?,
+      ~barClassName=?,
+      ~cssModule=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=progress,
-    ~props=makeProps(
-      ~bar?,
-      ~multi?,
-      ~tag?,
-      ~value?,
-      ~max?,
-      ~animated?,
-      ~striped?,
-      ~color?,
-      ~className?,
-      ~barClassName?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~bar?,
+        ~multi?,
+        ~tag?,
+        ~value?,
+        ~max?,
+        ~animated?,
+        ~striped?,
+        ~color?,
+        ~className?,
+        ~barClassName?,
+        ~cssModule?,
+        (),
+      ),
+    children,
   );

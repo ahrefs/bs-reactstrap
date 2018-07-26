@@ -1,29 +1,23 @@
-[@bs.module "reactstrap"] external listGroup : ReasonReact.reactClass = "ListGroup";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~flush: bool=?,
-  ~className: string=?,
-  ~cssModule: 'b=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external listGroup : ReasonReact.reactClass = "ListGroup";
 
-let make = (
-  ~tag=?,
-  ~flush=?,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  flush: bool,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make = (~tag=?, ~flush=?, ~className=?, ~cssModule=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=listGroup,
-    ~props=makeProps(
-      ~tag?,
-      ~flush?,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=props(~tag?, ~flush?, ~className?, ~cssModule?, ()),
+    children,
   );

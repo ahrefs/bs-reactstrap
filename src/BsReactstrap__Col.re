@@ -1,44 +1,63 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external col : ReasonReact.reactClass = "Col";
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~xs: 'b=?,
-  ~sm: 'c=?,
-  ~md: 'd=?,
-  ~lg: 'e=?,
-  ~xl: 'f=?,
-  ~className: string=?,
-  ~cssModule: 'g=?,
-  ~widths: 'h=?,
-  unit
-) => _ = "";
+type xs;
+type sm;
+type md;
+type lg;
+type xl;
+type widths;
 
-let make = (
-  ~tag=?,
-  ~xs=?,
-  ~sm=?,
-  ~md=?,
-  ~lg=?,
-  ~xl=?,
-  ~className=?,
-  ~cssModule=?,
-  ~widths=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  xs,
+  [@bs.optional]
+  sm,
+  [@bs.optional]
+  md,
+  [@bs.optional]
+  lg,
+  [@bs.optional]
+  xl,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  widths,
+};
+
+let make =
+    (
+      ~tag=?,
+      ~xs=?,
+      ~sm=?,
+      ~md=?,
+      ~lg=?,
+      ~xl=?,
+      ~className=?,
+      ~cssModule=?,
+      ~widths=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=col,
-    ~props=makeProps(
-      ~tag?,
-      ~xs?,
-      ~sm?,
-      ~md?,
-      ~lg?,
-      ~xl?,
-      ~className?,
-      ~cssModule?,
-      ~widths?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~tag?,
+        ~xs?,
+        ~sm?,
+        ~md?,
+        ~lg?,
+        ~xl?,
+        ~className?,
+        ~cssModule?,
+        ~widths?,
+        (),
+      ),
+    children,
   );

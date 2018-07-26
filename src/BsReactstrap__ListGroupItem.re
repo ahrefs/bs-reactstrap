@@ -1,38 +1,49 @@
-[@bs.module "reactstrap"] external listGroupItem : ReasonReact.reactClass = "ListGroupItem";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~active: bool=?,
-  ~disabled: bool=?,
-  ~color: string=?,
-  ~action: bool=?,
-  ~className: 'b=?,
-  ~cssModule: 'c=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external listGroupItem : ReasonReact.reactClass = "ListGroupItem";
 
-let make = (
-  ~tag=?,
-  ~active=?,
-  ~disabled=?,
-  ~color=?,
-  ~action=?,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  active: bool,
+  [@bs.optional]
+  disabled: bool,
+  [@bs.optional]
+  color: string,
+  [@bs.optional]
+  action: bool,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make =
+    (
+      ~tag=?,
+      ~active=?,
+      ~disabled=?,
+      ~color=?,
+      ~action=?,
+      ~className=?,
+      ~cssModule=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=listGroupItem,
-    ~props=makeProps(
-      ~tag?,
-      ~active?,
-      ~disabled?,
-      ~color?,
-      ~action?,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~tag?,
+        ~active?,
+        ~disabled?,
+        ~color?,
+        ~action?,
+        ~className?,
+        ~cssModule?,
+        (),
+      ),
+    children,
   );

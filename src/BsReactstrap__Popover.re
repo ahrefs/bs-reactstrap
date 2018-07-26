@@ -1,56 +1,79 @@
-[@bs.module "reactstrap"] external popover : ReasonReact.reactClass = "Popover";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~placement: 'a=?,
-  ~target: 'b,
-  ~container: 'c=?,
-  ~isOpen: bool=?,
-  ~disabled: bool=?,
-  ~hideArrow: bool=?,
-  ~className: string=?,
-  ~innerClassName: string=?,
-  ~placementPrefix: string=?,
-  ~cssModule: 'd=?,
-  ~toggle: 'e=?,
-  ~delay: 'f=?,
-  ~modifiers: 'g=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external popover : ReasonReact.reactClass = "Popover";
 
-let make = (
-  ~placement=?,
-  ~target,
-  ~container=?,
-  ~isOpen=?,
-  ~disabled=?,
-  ~hideArrow=?,
-  ~className=?,
-  ~innerClassName=?,
-  ~placementPrefix=?,
-  ~cssModule=?,
-  ~toggle=?,
-  ~delay=?,
-  ~modifiers=?,
-  children
-) =>
+type target;
+type placement;
+type toggle;
+type delay;
+type modifiers;
+type container;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  placement,
+  target,
+  [@bs.optional]
+  container,
+  [@bs.optional]
+  isOpen: bool,
+  [@bs.optional]
+  disabled: bool,
+  [@bs.optional]
+  hideArrow: bool,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  innerClassName: string,
+  [@bs.optional]
+  placementPrefix: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  toggle,
+  [@bs.optional]
+  delay,
+  [@bs.optional]
+  modifiers,
+};
+
+let make =
+    (
+      ~placement=?,
+      ~target,
+      ~container=?,
+      ~isOpen=?,
+      ~disabled=?,
+      ~hideArrow=?,
+      ~className=?,
+      ~innerClassName=?,
+      ~placementPrefix=?,
+      ~cssModule=?,
+      ~toggle=?,
+      ~delay=?,
+      ~modifiers=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=popover,
-    ~props=makeProps(
-      ~placement?,
-      ~target,
-      ~container?,
-      ~isOpen?,
-      ~disabled?,
-      ~hideArrow?,
-      ~className?,
-      ~innerClassName?,
-      ~placementPrefix?,
-      ~cssModule?,
-      ~toggle?,
-      ~delay?,
-      ~modifiers?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~placement?,
+        ~target,
+        ~container?,
+        ~isOpen?,
+        ~disabled?,
+        ~hideArrow?,
+        ~className?,
+        ~innerClassName?,
+        ~placementPrefix?,
+        ~cssModule?,
+        ~toggle?,
+        ~delay?,
+        ~modifiers?,
+        (),
+      ),
+    children,
   );

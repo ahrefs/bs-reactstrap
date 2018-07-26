@@ -1,32 +1,40 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external fade : ReasonReact.reactClass = "Fade";
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~baseClass: string=?,
-  ~baseClassActive: string=?,
-  ~className: string=?,
-  ~cssModule: 'b=?,
-  unit
-) => _ = "";
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  baseClass: string,
+  [@bs.optional]
+  baseClassActive: string,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
 
-let make = (
-  ~tag=?,
-  ~baseClass=?,
-  ~baseClassActive=?,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+let make =
+    (
+      ~tag=?,
+      ~baseClass=?,
+      ~baseClassActive=?,
+      ~className=?,
+      ~cssModule=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=fade,
-    ~props=makeProps(
-      ~tag?,
-      ~baseClass?,
-      ~baseClassActive?,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~tag?,
+        ~baseClass?,
+        ~baseClassActive?,
+        ~className?,
+        ~cssModule?,
+        (),
+      ),
+    children,
   );

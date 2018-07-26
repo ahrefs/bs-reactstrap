@@ -1,29 +1,25 @@
-[@bs.module "reactstrap"] external cardLink : ReasonReact.reactClass = "CardLink";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~innerRef: 'b=?,
-  ~className: string=?,
-  ~cssModule: 'c=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external cardLink : ReasonReact.reactClass = "CardLink";
 
-let make = (
-  ~tag=?,
-  ~innerRef=?,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+type innerRef;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  innerRef,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make = (~tag=?, ~innerRef=?, ~className=?, ~cssModule=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=cardLink,
-    ~props=makeProps(
-      ~tag?,
-      ~innerRef?,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=props(~tag?, ~innerRef?, ~className?, ~cssModule?, ()),
+    children,
   );

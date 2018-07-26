@@ -1,41 +1,57 @@
-[@bs.module "reactstrap"] external uncontrolledCarousel : ReasonReact.reactClass = "UncontrolledCarousel";
+[@bs.module "reactstrap"]
+external uncontrolledCarousel : ReasonReact.reactClass =
+  "UncontrolledCarousel";
 
-[@bs.obj]
-external makeProps : (
-  ~items: 'a,
-  ~indicators: bool=?,
-  ~controls: bool=?,
-  ~autoPlay: bool=?,
-  ~activeIndex: 'b=?,
-  ~next: 'c=?,
-  ~previous: 'd=?,
-  ~goToIndex: 'e=?,
-  unit
-) => _ = "";
+type items;
+type activeIndex;
+type next;
+type previous;
+type goToIndex;
 
-let make = (
-  ~items,
-  ~indicators=?,
-  ~controls=?,
-  ~autoPlay=?,
-  ~activeIndex=?,
-  ~next=?,
-  ~previous=?,
-  ~goToIndex=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  items,
+  [@bs.optional]
+  indicators: bool,
+  [@bs.optional]
+  controls: bool,
+  [@bs.optional]
+  autoPlay: bool,
+  [@bs.optional]
+  activeIndex,
+  [@bs.optional]
+  next,
+  [@bs.optional]
+  previous,
+  [@bs.optional]
+  goToIndex,
+};
+
+let make =
+    (
+      ~items,
+      ~indicators=?,
+      ~controls=?,
+      ~autoPlay=?,
+      ~activeIndex=?,
+      ~next=?,
+      ~previous=?,
+      ~goToIndex=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=uncontrolledCarousel,
-    ~props=makeProps(
-      ~items,
-      ~indicators?,
-      ~controls?,
-      ~autoPlay?,
-      ~activeIndex?,
-      ~next?,
-      ~previous?,
-      ~goToIndex?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~items,
+        ~indicators?,
+        ~controls?,
+        ~autoPlay?,
+        ~activeIndex?,
+        ~next?,
+        ~previous?,
+        ~goToIndex?,
+        (),
+      ),
+    children,
   );

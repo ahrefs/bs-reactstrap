@@ -1,29 +1,23 @@
-[@bs.module "reactstrap"] external pagination : ReasonReact.reactClass = "Pagination";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~className: string=?,
-  ~cssModule: 'a=?,
-  ~size: string=?,
-  ~tag: 'b=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external pagination : ReasonReact.reactClass = "Pagination";
 
-let make = (
-  ~className=?,
-  ~cssModule=?,
-  ~size=?,
-  ~tag=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  size: string,
+  [@bs.optional]
+  tag,
+};
+
+let make = (~className=?, ~cssModule=?, ~size=?, ~tag=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=pagination,
-    ~props=makeProps(
-      ~className?,
-      ~cssModule?,
-      ~size?,
-      ~tag?,
-      ()
-    ),
-    children
+    ~props=props(~className?, ~cssModule?, ~size?, ~tag?, ()),
+    children,
   );

@@ -1,47 +1,63 @@
-[@bs.module "reactstrap"] external dropdownToggle : ReasonReact.reactClass = "DropdownToggle";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~caret: bool=?,
-  ~color: string=?,
-  ~className: string=?,
-  ~cssModule: 'a=?,
-  ~disabled: bool=?,
-  ~onClick: 'b=?,
-  ~ariaHaspopup: bool=?,
-  ~split: bool=?,
-  ~tag: 'c=?,
-  ~nav: bool=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external dropdownToggle : ReasonReact.reactClass = "DropdownToggle";
 
-let make = (
-  ~caret=?,
-  ~color=?,
-  ~className=?,
-  ~cssModule=?,
-  ~disabled=?,
-  ~onClick=?,
-  ~ariaHaspopup=?,
-  ~split=?,
-  ~tag=?,
-  ~nav=?,
-  children
-) =>
+type onClick;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  caret: bool,
+  [@bs.optional]
+  color: string,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  disabled: bool,
+  [@bs.optional]
+  onClick,
+  [@bs.optional]
+  ariaHaspopup: bool,
+  [@bs.optional]
+  split: bool,
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  nav: bool,
+};
+
+let make =
+    (
+      ~caret=?,
+      ~color=?,
+      ~className=?,
+      ~cssModule=?,
+      ~disabled=?,
+      ~onClick=?,
+      ~ariaHaspopup=?,
+      ~split=?,
+      ~tag=?,
+      ~nav=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=dropdownToggle,
-    ~props=makeProps(
-      ~caret?,
-      ~color?,
-      ~className?,
-      ~cssModule?,
-      ~disabled?,
-      ~onClick?,
-      ~ariaHaspopup?,
-      ~split?,
-      ~tag?,
-      ~nav?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~caret?,
+        ~color?,
+        ~className?,
+        ~cssModule?,
+        ~disabled?,
+        ~onClick?,
+        ~ariaHaspopup?,
+        ~split?,
+        ~tag?,
+        ~nav?,
+        (),
+      ),
+    children,
   );

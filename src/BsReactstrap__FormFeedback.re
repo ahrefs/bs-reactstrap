@@ -1,29 +1,23 @@
-[@bs.module "reactstrap"] external formFeedback : ReasonReact.reactClass = "FormFeedback";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: string=?,
-  ~className: string=?,
-  ~cssModule: 'a=?,
-  ~valid: bool=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external formFeedback : ReasonReact.reactClass = "FormFeedback";
 
-let make = (
-  ~tag=?,
-  ~className=?,
-  ~cssModule=?,
-  ~valid=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag: string,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  valid: bool,
+};
+
+let make = (~tag=?, ~className=?, ~cssModule=?, ~valid=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=formFeedback,
-    ~props=makeProps(
-      ~tag?,
-      ~className?,
-      ~cssModule?,
-      ~valid?,
-      ()
-    ),
-    children
+    ~props=props(~tag?, ~className?, ~cssModule?, ~valid?, ()),
+    children,
   );

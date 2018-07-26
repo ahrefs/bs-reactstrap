@@ -1,41 +1,54 @@
+open BsReactstrap__Props;
+
 [@bs.module "reactstrap"] external card : ReasonReact.reactClass = "Card";
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~inverse: bool=?,
-  ~color: string=?,
-  ~block: 'b=?,
-  ~body: bool=?,
-  ~outline: bool=?,
-  ~className: string=?,
-  ~cssModule: 'c=?,
-  unit
-) => _ = "";
+type block;
 
-let make = (
-  ~tag=?,
-  ~inverse=?,
-  ~color=?,
-  ~block=?,
-  ~body=?,
-  ~outline=?,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  inverse: bool,
+  [@bs.optional]
+  color: string,
+  [@bs.optional]
+  block,
+  [@bs.optional]
+  body: bool,
+  [@bs.optional]
+  outline: bool,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make =
+    (
+      ~tag=?,
+      ~inverse=?,
+      ~color=?,
+      ~block=?,
+      ~body=?,
+      ~outline=?,
+      ~className=?,
+      ~cssModule=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=card,
-    ~props=makeProps(
-      ~tag?,
-      ~inverse?,
-      ~color?,
-      ~block?,
-      ~body?,
-      ~outline?,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~tag?,
+        ~inverse?,
+        ~color?,
+        ~block?,
+        ~body?,
+        ~outline?,
+        ~className?,
+        ~cssModule?,
+        (),
+      ),
+    children,
   );

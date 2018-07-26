@@ -1,41 +1,57 @@
-[@bs.module "reactstrap"] external navLink : ReasonReact.reactClass = "NavLink";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~innerRef: 'b=?,
-  ~disabled: bool=?,
-  ~active: bool=?,
-  ~className: string=?,
-  ~cssModule: 'c=?,
-  ~onClick: 'd=?,
-  ~href: 'e=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external navLink : ReasonReact.reactClass = "NavLink";
 
-let make = (
-  ~tag=?,
-  ~innerRef=?,
-  ~disabled=?,
-  ~active=?,
-  ~className=?,
-  ~cssModule=?,
-  ~onClick=?,
-  ~href=?,
-  children
-) =>
+type onClick;
+type href;
+type innerRef;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  [@bs.optional]
+  innerRef,
+  [@bs.optional]
+  disabled: bool,
+  [@bs.optional]
+  active: bool,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+  [@bs.optional]
+  onClick,
+  [@bs.optional]
+  href,
+};
+
+let make =
+    (
+      ~tag=?,
+      ~innerRef=?,
+      ~disabled=?,
+      ~active=?,
+      ~className=?,
+      ~cssModule=?,
+      ~onClick=?,
+      ~href=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=navLink,
-    ~props=makeProps(
-      ~tag?,
-      ~innerRef?,
-      ~disabled?,
-      ~active?,
-      ~className?,
-      ~cssModule?,
-      ~onClick?,
-      ~href?,
-      ()
-    ),
-    children
+    ~props=
+      props(
+        ~tag?,
+        ~innerRef?,
+        ~disabled?,
+        ~active?,
+        ~className?,
+        ~cssModule?,
+        ~onClick?,
+        ~href?,
+        (),
+      ),
+    children,
   );

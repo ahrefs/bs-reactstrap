@@ -1,29 +1,24 @@
-[@bs.module "reactstrap"] external inputGroupAddon : ReasonReact.reactClass = "InputGroupAddon";
+open BsReactstrap__Props;
 
-[@bs.obj]
-external makeProps : (
-  ~tag: 'a=?,
-  ~addonType: 'b,
-  ~className: string=?,
-  ~cssModule: 'c=?,
-  unit
-) => _ = "";
+[@bs.module "reactstrap"]
+external inputGroupAddon : ReasonReact.reactClass = "InputGroupAddon";
 
-let make = (
-  ~tag=?,
-  ~addonType,
-  ~className=?,
-  ~cssModule=?,
-  children
-) =>
+type addonType;
+
+[@bs.deriving abstract]
+type props = {
+  [@bs.optional]
+  tag,
+  addonType,
+  [@bs.optional]
+  className: string,
+  [@bs.optional]
+  cssModule,
+};
+
+let make = (~tag=?, ~addonType, ~className=?, ~cssModule=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=inputGroupAddon,
-    ~props=makeProps(
-      ~tag?,
-      ~addonType,
-      ~className?,
-      ~cssModule?,
-      ()
-    ),
-    children
+    ~props=props(~tag?, ~addonType, ~className?, ~cssModule?, ()),
+    children,
   );
