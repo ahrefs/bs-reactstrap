@@ -1,23 +1,29 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external navbarBrand : ReasonReact.reactClass = "NavbarBrand";
 
-[@bs.module "reactstrap"]
-external navbarBrand : ReasonReact.reactClass = "NavbarBrand";
+[@bs.obj]
+external makeProps : (
+  ~tag: 'a=?,
+  ~className: string=?,
+  ~cssModule: 'b=?,
+  ~href: string=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-  [@bs.optional]
-  href: string,
-};
-
-let make = (~tag=?, ~className=?, ~cssModule=?, ~href=?, children) =>
+let make = (
+  ~tag=?,
+  ~className=?,
+  ~cssModule=?,
+  ~href=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=navbarBrand,
-    ~props=props(~tag?, ~className?, ~cssModule?, ~href?, ()),
-    children,
+    ~props=makeProps(
+      ~tag?,
+      ~className?,
+      ~cssModule?,
+      ~href?,
+      ()
+    ),
+    children
   );

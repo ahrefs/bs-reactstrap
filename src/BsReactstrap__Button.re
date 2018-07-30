@@ -1,37 +1,24 @@
-open BsReactstrap__Props;
-
 [@bs.module "reactstrap"] external button : ReasonReact.reactClass = "Button";
 
-type innerRef;
-type onClick;
-
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  active: bool,
-  [@bs.optional]
-  block: bool,
-  [@bs.optional]
-  color: string,
-  [@bs.optional]
-  disabled: bool,
-  [@bs.optional]
-  outline: bool,
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  id: string,
-  [@bs.optional]
-  innerRef,
-  [@bs.optional]
-  onClick,
-  [@bs.optional]
-  size: string,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-};
+[@bs.obj]
+external makeProps :
+  (
+    ~active: bool=?,
+    ~block: bool=?,
+    ~color: string=?,
+    ~disabled: bool=?,
+    ~outline: bool=?,
+    ~tag: 'a=?,
+    ~id: string=?,
+    ~innerRef: 'b=?,
+    ~onClick: 'c=?,
+    ~size: string=?,
+    ~className: string=?,
+    ~cssModule: 'd=?,
+    unit
+  ) =>
+  _ =
+  "";
 
 let make =
     (
@@ -52,7 +39,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=button,
     ~props=
-      props(
+      makeProps(
         ~active?,
         ~block?,
         ~color?,

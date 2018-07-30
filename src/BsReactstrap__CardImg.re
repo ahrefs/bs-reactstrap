@@ -1,25 +1,32 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external cardImg : ReasonReact.reactClass = "CardImg";
 
-[@bs.module "reactstrap"]
-external cardImg : ReasonReact.reactClass = "CardImg";
+[@bs.obj]
+external makeProps : (
+  ~tag: 'a=?,
+  ~top: bool=?,
+  ~bottom: bool=?,
+  ~className: string=?,
+  ~cssModule: 'b=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  top: bool,
-  [@bs.optional]
-  bottom: bool,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-};
-
-let make = (~tag=?, ~top=?, ~bottom=?, ~className=?, ~cssModule=?, children) =>
+let make = (
+  ~tag=?,
+  ~top=?,
+  ~bottom=?,
+  ~className=?,
+  ~cssModule=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=cardImg,
-    ~props=props(~tag?, ~top?, ~bottom?, ~className?, ~cssModule?, ()),
-    children,
+    ~props=makeProps(
+      ~tag?,
+      ~top?,
+      ~bottom?,
+      ~className?,
+      ~cssModule?,
+      ()
+    ),
+    children
   );

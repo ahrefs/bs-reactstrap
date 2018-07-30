@@ -1,15 +1,20 @@
-[@bs.module "reactstrap"]
-external inputGroupButtonDropdown : ReasonReact.reactClass =
-  "InputGroupButtonDropdown";
+[@bs.module "reactstrap"] external inputGroupButtonDropdown : ReasonReact.reactClass = "InputGroupButtonDropdown";
 
-type addonType;
+[@bs.obj]
+external makeProps : (
+  ~addonType: 'a,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {addonType};
-
-let make = (~addonType, children) =>
+let make = (
+  ~addonType,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=inputGroupButtonDropdown,
-    ~props=props(~addonType),
-    children,
+    ~props=makeProps(
+      ~addonType,
+      ()
+    ),
+    children
   );

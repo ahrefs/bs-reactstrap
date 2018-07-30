@@ -1,129 +1,89 @@
-open BsReactstrap__Props;
-
 [@bs.module "reactstrap"] external modal : ReasonReact.reactClass = "Modal";
 
-type toggle;
-type backdrop;
-type onExit;
-type onReturn;
-type onOpened;
-type onClosed;
-type external_;
-type onEnter;
-type zIndex;
+[@bs.obj]
+external makeProps : (
+  ~isOpen: bool=?,
+  ~autoFocus: bool=?,
+  ~centered: bool=?,
+  ~size: string=?,
+  ~toggle: 'a=?,
+  ~keyboard: bool=?,
+  ~role: string=?,
+  ~labelledBy: string=?,
+  ~backdrop: 'b=?,
+  ~onEnter: 'c=?,
+  ~onExit: 'd=?,
+  ~onOpened: 'e=?,
+  ~onClosed: 'f=?,
+  ~className: string=?,
+  ~wrapClassName: string=?,
+  ~modalClassName: string=?,
+  ~backdropClassName: string=?,
+  ~contentClassName: string=?,
+  ~external_: 'g=?,
+  ~fade: bool=?,
+  ~cssModule: 'h=?,
+  ~zIndex: 'i=?,
+  ~backdropTransition: 'j=?,
+  ~modalTransition: 'k=?,
+  unit
+) => _ = "";
 
-type backdropTransition;
-type modalTransition;
-
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  isOpen: bool,
-  [@bs.optional]
-  autoFocus: bool,
-  [@bs.optional]
-  centered: bool,
-  [@bs.optional]
-  size: string,
-  [@bs.optional]
-  toggle,
-  [@bs.optional]
-  keyboard: bool,
-  [@bs.optional]
-  role: string,
-  [@bs.optional]
-  labelledBy: string,
-  [@bs.optional]
-  backdrop,
-  [@bs.optional]
-  onEnter,
-  [@bs.optional]
-  onExit,
-  [@bs.optional]
-  onOpened,
-  [@bs.optional]
-  onClosed,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  wrapClassName: string,
-  [@bs.optional]
-  modalClassName: string,
-  [@bs.optional]
-  backdropClassName: string,
-  [@bs.optional]
-  contentClassName: string,
-  [@bs.optional] [@bs.as "external"]
-  external_,
-  [@bs.optional]
-  fade: bool,
-  [@bs.optional]
-  cssModule,
-  [@bs.optional]
-  zIndex,
-  [@bs.optional]
-  backdropTransition,
-  [@bs.optional]
-  modalTransition,
-};
-
-let make =
-    (
-      ~isOpen=?,
-      ~autoFocus=?,
-      ~centered=?,
-      ~size=?,
-      ~toggle=?,
-      ~keyboard=?,
-      ~role=?,
-      ~labelledBy=?,
-      ~backdrop=?,
-      ~onEnter=?,
-      ~onExit=?,
-      ~onOpened=?,
-      ~onClosed=?,
-      ~className=?,
-      ~wrapClassName=?,
-      ~modalClassName=?,
-      ~backdropClassName=?,
-      ~contentClassName=?,
-      ~external_=?,
-      ~fade=?,
-      ~cssModule=?,
-      ~zIndex=?,
-      ~backdropTransition=?,
-      ~modalTransition=?,
-      children,
-    ) =>
+let make = (
+  ~isOpen=?,
+  ~autoFocus=?,
+  ~centered=?,
+  ~size=?,
+  ~toggle=?,
+  ~keyboard=?,
+  ~role=?,
+  ~labelledBy=?,
+  ~backdrop=?,
+  ~onEnter=?,
+  ~onExit=?,
+  ~onOpened=?,
+  ~onClosed=?,
+  ~className=?,
+  ~wrapClassName=?,
+  ~modalClassName=?,
+  ~backdropClassName=?,
+  ~contentClassName=?,
+  ~external_=?,
+  ~fade=?,
+  ~cssModule=?,
+  ~zIndex=?,
+  ~backdropTransition=?,
+  ~modalTransition=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
-    ~props=
-      props(
-        ~isOpen?,
-        ~autoFocus?,
-        ~centered?,
-        ~size?,
-        ~toggle?,
-        ~keyboard?,
-        ~role?,
-        ~labelledBy?,
-        ~backdrop?,
-        ~onEnter?,
-        ~onExit?,
-        ~onOpened?,
-        ~onClosed?,
-        ~className?,
-        ~wrapClassName?,
-        ~modalClassName?,
-        ~backdropClassName?,
-        ~contentClassName?,
-        ~external_?,
-        ~fade?,
-        ~cssModule?,
-        ~zIndex?,
-        ~backdropTransition?,
-        ~modalTransition?,
-        (),
-      ),
-    children,
+    ~props=makeProps(
+      ~isOpen?,
+      ~autoFocus?,
+      ~centered?,
+      ~size?,
+      ~toggle?,
+      ~keyboard?,
+      ~role?,
+      ~labelledBy?,
+      ~backdrop?,
+      ~onEnter?,
+      ~onExit?,
+      ~onOpened?,
+      ~onClosed?,
+      ~className?,
+      ~wrapClassName?,
+      ~modalClassName?,
+      ~backdropClassName?,
+      ~contentClassName?,
+      ~external_?,
+      ~fade?,
+      ~cssModule?,
+      ~zIndex?,
+      ~backdropTransition?,
+      ~modalTransition?,
+      ()
+    ),
+    children
   );

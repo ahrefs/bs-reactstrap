@@ -1,26 +1,32 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external collapse : ReasonReact.reactClass = "Collapse";
 
-[@bs.module "reactstrap"]
-external collapse : ReasonReact.reactClass = "Collapse";
+[@bs.obj]
+external makeProps : (
+  ~isOpen: bool=?,
+  ~tag: 'a=?,
+  ~className: 'b=?,
+  ~navbar: bool=?,
+  ~cssModule: 'c=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  isOpen: bool,
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  navbar: bool,
-  [@bs.optional]
-  cssModule,
-};
-
-let make =
-    (~isOpen=?, ~tag=?, ~className=?, ~navbar=?, ~cssModule=?, children) =>
+let make = (
+  ~isOpen=?,
+  ~tag=?,
+  ~className=?,
+  ~navbar=?,
+  ~cssModule=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=collapse,
-    ~props=props(~isOpen?, ~tag?, ~className?, ~navbar?, ~cssModule?, ()),
-    children,
+    ~props=makeProps(
+      ~isOpen?,
+      ~tag?,
+      ~className?,
+      ~navbar?,
+      ~cssModule?,
+      ()
+    ),
+    children
   );

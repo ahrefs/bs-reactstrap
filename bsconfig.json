@@ -8,7 +8,8 @@
   ],
   "bs-dependencies": ["reason-react"],
   "package-specs": {
-    "module": "commonjs"
+    "module": "commonjs",
+    "in-source": true
   },
   "reason": {
     "react-jsx": 2

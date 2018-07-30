@@ -1,16 +1,20 @@
 [@bs.module "reactstrap"] external portal : ReasonReact.reactClass = "Portal";
 
-type node;
+[@bs.obj]
+external makeProps : (
+  ~node: 'a=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  node,
-};
-
-let make = (~node=?, children) =>
+let make = (
+  ~node=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=portal,
-    ~props=props(~node?, ()),
-    children,
+    ~props=makeProps(
+      ~node?,
+      ()
+    ),
+    children
   );

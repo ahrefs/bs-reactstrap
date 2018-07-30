@@ -1,82 +1,59 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external dropdown : ReasonReact.reactClass = "Dropdown";
 
-[@bs.module "reactstrap"]
-external dropdown : ReasonReact.reactClass = "Dropdown";
+[@bs.obj]
+external makeProps : (
+  ~disabled: bool=?,
+  ~dropup: 'a=?,
+  ~direction: 'b=?,
+  ~group: bool=?,
+  ~isOpen: bool=?,
+  ~nav: bool=?,
+  ~active: bool=?,
+  ~addonType: 'c=?,
+  ~size: string=?,
+  ~tag: string=?,
+  ~toggle: 'd=?,
+  ~className: string=?,
+  ~cssModule: 'e=?,
+  ~inNavbar: bool=?,
+  unit
+) => _ = "";
 
-type toggle;
-type dropup;
-type direction;
-type addonType;
-
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  disabled: bool,
-  [@bs.optional]
-  dropup,
-  [@bs.optional]
-  direction,
-  [@bs.optional]
-  group: bool,
-  [@bs.optional]
-  isOpen: bool,
-  [@bs.optional]
-  nav: bool,
-  [@bs.optional]
-  active: bool,
-  [@bs.optional]
-  addonType,
-  [@bs.optional]
-  size: string,
-  [@bs.optional]
-  tag: string,
-  [@bs.optional]
-  toggle,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-  [@bs.optional]
-  inNavbar: bool,
-};
-
-let make =
-    (
-      ~disabled=?,
-      ~dropup=?,
-      ~direction=?,
-      ~group=?,
-      ~isOpen=?,
-      ~nav=?,
-      ~active=?,
-      ~addonType=?,
-      ~size=?,
-      ~tag=?,
-      ~toggle=?,
-      ~className=?,
-      ~cssModule=?,
-      ~inNavbar=?,
-      children,
-    ) =>
+let make = (
+  ~disabled=?,
+  ~dropup=?,
+  ~direction=?,
+  ~group=?,
+  ~isOpen=?,
+  ~nav=?,
+  ~active=?,
+  ~addonType=?,
+  ~size=?,
+  ~tag=?,
+  ~toggle=?,
+  ~className=?,
+  ~cssModule=?,
+  ~inNavbar=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=dropdown,
-    ~props=
-      props(
-        ~disabled?,
-        ~dropup?,
-        ~direction?,
-        ~group?,
-        ~isOpen?,
-        ~nav?,
-        ~active?,
-        ~addonType?,
-        ~size?,
-        ~tag?,
-        ~toggle?,
-        ~className?,
-        ~cssModule?,
-        ~inNavbar?,
-        (),
-      ),
-    children,
+    ~props=makeProps(
+      ~disabled?,
+      ~dropup?,
+      ~direction?,
+      ~group?,
+      ~isOpen?,
+      ~nav?,
+      ~active?,
+      ~addonType?,
+      ~size?,
+      ~tag?,
+      ~toggle?,
+      ~className?,
+      ~cssModule?,
+      ~inNavbar?,
+      ()
+    ),
+    children
   );

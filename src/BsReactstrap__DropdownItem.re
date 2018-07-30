@@ -1,58 +1,44 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external dropdownItem : ReasonReact.reactClass = "DropdownItem";
 
-[@bs.module "reactstrap"]
-external dropdownItem : ReasonReact.reactClass = "DropdownItem";
-type onClick;
+[@bs.obj]
+external makeProps : (
+  ~active: bool=?,
+  ~disabled: bool=?,
+  ~divider: bool=?,
+  ~tag: 'a=?,
+  ~header: bool=?,
+  ~onClick: 'b=?,
+  ~className: string=?,
+  ~cssModule: 'c=?,
+  ~toggle: bool=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  active: bool,
-  [@bs.optional]
-  disabled: bool,
-  [@bs.optional]
-  divider: bool,
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  header: bool,
-  [@bs.optional]
-  onClick,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-  [@bs.optional]
-  toggle: bool,
-};
-
-let make =
-    (
-      ~active=?,
-      ~disabled=?,
-      ~divider=?,
-      ~tag=?,
-      ~header=?,
-      ~onClick=?,
-      ~className=?,
-      ~cssModule=?,
-      ~toggle=?,
-      children,
-    ) =>
+let make = (
+  ~active=?,
+  ~disabled=?,
+  ~divider=?,
+  ~tag=?,
+  ~header=?,
+  ~onClick=?,
+  ~className=?,
+  ~cssModule=?,
+  ~toggle=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=dropdownItem,
-    ~props=
-      props(
-        ~active?,
-        ~disabled?,
-        ~divider?,
-        ~tag?,
-        ~header?,
-        ~onClick?,
-        ~className?,
-        ~cssModule?,
-        ~toggle?,
-        (),
-      ),
-    children,
+    ~props=makeProps(
+      ~active?,
+      ~disabled?,
+      ~divider?,
+      ~tag?,
+      ~header?,
+      ~onClick?,
+      ~className?,
+      ~cssModule?,
+      ~toggle?,
+      ()
+    ),
+    children
   );

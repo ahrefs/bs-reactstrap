@@ -1,25 +1,32 @@
-open BsReactstrap__Props;
+[@bs.module "reactstrap"] external formText : ReasonReact.reactClass = "FormText";
 
-[@bs.module "reactstrap"]
-external formText : ReasonReact.reactClass = "FormText";
+[@bs.obj]
+external makeProps : (
+  ~inline: bool=?,
+  ~tag: 'a=?,
+  ~color: string=?,
+  ~className: string=?,
+  ~cssModule: 'b=?,
+  unit
+) => _ = "";
 
-[@bs.deriving abstract]
-type props = {
-  [@bs.optional]
-  inline: bool,
-  [@bs.optional]
-  tag,
-  [@bs.optional]
-  color: string,
-  [@bs.optional]
-  className: string,
-  [@bs.optional]
-  cssModule,
-};
-
-let make = (~inline=?, ~tag=?, ~color=?, ~className=?, ~cssModule=?, children) =>
+let make = (
+  ~inline=?,
+  ~tag=?,
+  ~color=?,
+  ~className=?,
+  ~cssModule=?,
+  children
+) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=formText,
-    ~props=props(~inline?, ~tag?, ~color?, ~className?, ~cssModule?, ()),
-    children,
+    ~props=makeProps(
+      ~inline?,
+      ~tag?,
+      ~color?,
+      ~className?,
+      ~cssModule?,
+      ()
+    ),
+    children
   );
