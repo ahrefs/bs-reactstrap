@@ -1,6 +1,6 @@
 {
   "name": "@ahrefs/bs-reactstrap",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Bucklescript bindings for Reactstrap",
   "homepage": "https://github.com/ahrefs/bs-reactstrap#readme",
   "repository": "git@github.com:ahrefs/bs-reactstrap.git",
