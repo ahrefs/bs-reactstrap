@@ -6,15 +6,18 @@
       "subdirs": true
     }
   ],
-  "bs-dependencies": ["reason-react"],
+  "bs-dependencies": [
+    "reason-react"
+  ],
   "package-specs": {
-    "module": "commonjs",
-    "in-source": true
+    "module": "commonjs"
   },
   "reason": {
     "react-jsx": 2
   },
   "suffix": ".bs.js",
-  "bsc-flags": ["-bs-super-errors"],
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
   "refmt": 3
 }
