@@ -3,7 +3,7 @@
 [@bs.obj]
 external makeProps : (
   ~tag: 'a=?,
-  ~_type: string=?,
+  ~type_: string=?,
   ~className: string=?,
   ~cssModule: 'b=?,
   unit
@@ -11,7 +11,7 @@ external makeProps : (
 
 let make = (
   ~tag=?,
-  ~_type=?,
+  ~type_=?,
   ~className=?,
   ~cssModule=?,
   children
@@ -20,7 +20,7 @@ let make = (
     ~reactClass=navbarToggler,
     ~props=makeProps(
       ~tag?,
-      ~_type?,
+      ~type_?,
       ~className?,
       ~cssModule?,
       ()
