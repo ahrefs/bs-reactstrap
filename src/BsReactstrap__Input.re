@@ -1,7 +1,7 @@
-[@bs.module "reactstrap"] external input : ReasonReact.reactClass = "Input";
+[@bs.module "reactstrap"] external input: ReasonReact.reactClass = "Input";
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~_type: string=?,
     ~size: string=?,
@@ -14,6 +14,12 @@ external makeProps :
     ~static: 'd=?,
     ~plaintext: bool=?,
     ~addon: bool=?,
+    ~onChange: ReactEvent.Form.t => unit=?,
+    ~onBlur: ReactEvent.Form.t => unit=?,
+    ~onFocus: ReactEvent.Form.t => unit=?,
+    ~placeholder: string=?,
+    ~value: string=?,
+    ~id: string=?,
     ~className: string=?,
     ~cssModule: 'e=?,
     unit
@@ -34,6 +40,12 @@ let make =
       ~static=?,
       ~plaintext=?,
       ~addon=?,
+      ~onChange=?,
+      ~onBlur=?,
+      ~onFocus=?,
+      ~placeholder=?,
+      ~value=?,
+      ~id=?,
       ~className=?,
       ~cssModule=?,
       children,
@@ -53,6 +65,12 @@ let make =
         ~static?,
         ~plaintext?,
         ~addon?,
+        ~onChange?,
+        ~onBlur?,
+        ~onFocus?,
+        ~placeholder?,
+        ~value?,
+        ~id?,
         ~className?,
         ~cssModule?,
         (),
