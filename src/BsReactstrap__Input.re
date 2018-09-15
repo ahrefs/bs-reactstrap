@@ -30,7 +30,7 @@ external makeProps:
 
 let make =
     (
-      ~_type=?,
+      ~type_=?,
       ~size=?,
       ~bsSize=?,
       ~state=?,
@@ -56,7 +56,7 @@ let make =
     ~reactClass=input,
     ~props=
       makeProps(
-        ~_type?,
+        ~_type=?type_,
         ~size?,
         ~bsSize?,
         ~state?,

@@ -1,8 +1,8 @@
 [@bs.module "reactstrap"]
-external navbarToggler : ReasonReact.reactClass = "NavbarToggler";
+external navbarToggler: ReasonReact.reactClass = "NavbarToggler";
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~tag: 'a=?,
     ~_type: string=?,
@@ -13,9 +13,9 @@ external makeProps :
   _ =
   "";
 
-let make = (~tag=?, ~_type=?, ~className=?, ~cssModule=?, children) =>
+let make = (~tag=?, ~type_=?, ~className=?, ~cssModule=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=navbarToggler,
-    ~props=makeProps(~tag?, ~_type?, ~className?, ~cssModule?, ()),
+    ~props=makeProps(~tag?, ~_type=?type_, ~className?, ~cssModule?, ()),
     children,
   );
