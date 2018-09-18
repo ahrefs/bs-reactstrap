@@ -4,11 +4,11 @@
 external makeProps:
   (
     ~inline: bool=?,
-    ~onSubmit: 'a => unit=?,
-    ~tag: 'b=?,
-    ~innerRef: 'c=?,
+    ~onSubmit: ReactEvent.Form.t => unit=?,
+    ~tag: 'a=?,
+    ~innerRef: 'b=?,
     ~className: string=?,
-    ~cssModule: 'd=?,
+    ~cssModule: 'c=?,
     unit
   ) =>
   _ =
