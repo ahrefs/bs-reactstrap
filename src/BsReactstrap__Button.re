@@ -1,7 +1,7 @@
-[@bs.module "reactstrap"] external button : ReasonReact.reactClass = "Button";
+[@bs.module "reactstrap"] external button: ReasonReact.reactClass = "Button";
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~active: bool=?,
     ~block: bool=?,
