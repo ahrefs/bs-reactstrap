@@ -1,8 +1,8 @@
 [@bs.module "reactstrap"]
-external buttonDropdown : ReasonReact.reactClass = "ButtonDropdown";
+external buttonDropdown: ReasonReact.reactClass = "ButtonDropdown";
 
 [@bs.obj]
-external makeProps :
+external makeProps:
   (~isOpen: bool=?, ~toggle: ReactEvent.Mouse.t => unit=?, unit) => _ =
   "";
 
