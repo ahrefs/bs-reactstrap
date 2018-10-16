@@ -8,6 +8,7 @@ external makeProps:
     ~bottom: bool=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~src: string=?,
     unit
   ) =>
   _ =
