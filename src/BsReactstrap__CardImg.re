@@ -14,9 +14,11 @@ external makeProps:
   _ =
   "";
 
-let make = (~tag=?, ~top=?, ~bottom=?, ~className=?, ~cssModule=?, children) =>
+let make =
+    (~tag=?, ~top=?, ~bottom=?, ~className=?, ~cssModule=?, ~src=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=cardImg,
-    ~props=makeProps(~tag?, ~top?, ~bottom?, ~className?, ~cssModule?, ()),
+    ~props=
+      makeProps(~tag?, ~top?, ~bottom?, ~className?, ~cssModule?, ~src?, ()),
     children,
   );
