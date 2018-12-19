@@ -26,6 +26,7 @@ external makeProps:
     ~id: string=?,
     ~className: string=?,
     ~cssModule: 'e=?,
+    ~readOnly: bool=?,
     unit
   ) =>
   _ =
@@ -56,6 +57,7 @@ let make =
       ~id=?,
       ~className=?,
       ~cssModule=?,
+      ~readOnly=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -85,6 +87,7 @@ let make =
         ~id?,
         ~className?,
         ~cssModule?,
+        ~readOnly?,
         (),
       ),
     children,
