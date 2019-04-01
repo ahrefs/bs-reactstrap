@@ -31,14 +31,12 @@ open BsReactstrap;
 
 let component = ReasonReact.statelessComponent("SomeComponent");
 
-let make = (~onChange, _children) => {
+let make = (~onClick, _children) => {
   ...component,
 
   render: _self => {
-    <Button color="primary" size="lg" onClick=(_e => Js.log("Hi!"))>
-      Hello
-    </Button>
-  }
+    <Button color="primary" size="lg" onClick> "Hello" </Button>;
+  },
 };
 ```
 
