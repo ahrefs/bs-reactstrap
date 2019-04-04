@@ -3,12 +3,36 @@ external breadcrumb: ReasonReact.reactClass = "Breadcrumb";
 
 [@bs.obj]
 external makeProps:
-  (~tag: string=?, ~className: string=?, ~cssModule: 'a=?, unit) => _ =
+  (
+    ~className: string=?,
+    ~cssModule: 'a=?,
+    ~listClassName: array(string)=?,
+    ~listTag: 'b=?,
+    ~tag: string=?,
+    unit
+  ) =>
+  _ =
   "";
 
-let make = (~tag=?, ~className=?, ~cssModule=?, children) =>
+let make =
+    (
+      ~className=?,
+      ~cssModule=?,
+      ~listClassName=?,
+      ~listTag=?,
+      ~tag=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=breadcrumb,
-    ~props=makeProps(~tag?, ~className?, ~cssModule?, ()),
+    ~props=
+      makeProps(
+        ~className?,
+        ~cssModule?,
+        ~listClassName?,
+        ~listTag?,
+        ~tag?,
+        (),
+      ),
     children,
   );
