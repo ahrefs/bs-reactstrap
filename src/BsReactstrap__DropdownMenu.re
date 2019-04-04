@@ -4,12 +4,13 @@ external dropdownMenu: ReasonReact.reactClass = "DropdownMenu";
 [@bs.obj]
 external makeProps:
   (
-    ~tag: string=?,
+    ~tag: 'a=?,
     ~right: bool=?,
     ~flip: bool=?,
     ~modifiers: 'a=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~persist: bool=?,
     unit
   ) =>
   _ =
@@ -23,6 +24,7 @@ let make =
       ~modifiers=?,
       ~className=?,
       ~cssModule=?,
+      ~persist=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -35,6 +37,7 @@ let make =
         ~modifiers?,
         ~className?,
         ~cssModule?,
+        ~persist?,
         (),
       ),
     children,
