@@ -9,7 +9,7 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'b=?,
     ~role: string=?,
-    ~size: string=?,
+    ~size: [@bs.string] [ | `xs | `sm | `md | `lg | `xl]=?,
     ~vertical: bool=?,
     unit
   ) =>

@@ -9,6 +9,8 @@ external makeProps:
     ~cssModule: 'a=?,
     ~next: bool=?,
     ~previous: bool=?,
+    ~first: bool=?,
+    ~last: bool=?,
     ~tag: 'b=?,
     unit
   ) =>
@@ -22,6 +24,8 @@ let make =
       ~cssModule=?,
       ~next=?,
       ~previous=?,
+      ~first=?,
+      ~last=?,
       ~tag=?,
       children,
     ) =>
@@ -34,6 +38,8 @@ let make =
         ~cssModule?,
         ~next?,
         ~previous?,
+        ~first?,
+        ~last?,
         ~tag?,
         (),
       ),

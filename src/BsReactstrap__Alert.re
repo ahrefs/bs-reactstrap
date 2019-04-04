@@ -7,7 +7,18 @@ external makeProps:
     ~closeClassName: string=?,
     ~closeAriaLabel: string=?,
     ~cssModule: 'a=?,
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `succeess
+              | `danger
+              | `warning
+              | `info
+              | `light
+              | `dark
+            ]
+              =?,
+    ~fade: bool=?,
     ~isOpen: bool=?,
     ~toggle: 'b=?,
     ~tag: 'c=?,
@@ -20,13 +31,14 @@ external makeProps:
 let make =
     (
       ~className=?,
-      ~closeClassName=?,
       ~closeAriaLabel=?,
-      ~cssModule=?,
+      ~closeClassName=?,
       ~color=?,
+      ~cssModule=?,
+      ~fade=?,
       ~isOpen=?,
-      ~toggle=?,
       ~tag=?,
+      ~toggle=?,
       ~transition=?,
       children,
     ) =>
@@ -35,13 +47,14 @@ let make =
     ~props=
       makeProps(
         ~className?,
-        ~closeClassName?,
         ~closeAriaLabel?,
-        ~cssModule?,
+        ~closeClassName?,
         ~color?,
+        ~cssModule?,
+        ~fade?,
         ~isOpen?,
-        ~toggle?,
         ~tag?,
+        ~toggle?,
         ~transition?,
         (),
       ),

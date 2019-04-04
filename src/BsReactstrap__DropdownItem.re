@@ -9,7 +9,7 @@ external makeProps:
     ~divider: bool=?,
     ~tag: 'a=?,
     ~header: bool=?,
-    ~onClick: 'b=?,
+    ~onClick: ReactEvent.Mouse.t => unit=?,
     ~className: string=?,
     ~cssModule: 'c=?,
     ~toggle: bool=?,

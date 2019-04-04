@@ -5,7 +5,16 @@ external makeProps:
   (
     ~active: bool=?,
     ~block: bool=?,
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `success
+              | `info
+              | `warning
+              | `danger
+              | `link
+            ]
+              =?,
     ~disabled: bool=?,
     ~outline: bool=?,
     ~tag: 'a=?,

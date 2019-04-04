@@ -3,12 +3,39 @@ external buttonDropdown: ReasonReact.reactClass = "ButtonDropdown";
 
 [@bs.obj]
 external makeProps:
-  (~isOpen: bool=?, ~toggle: ReactEvent.Mouse.t => unit=?, unit) => _ =
+  (
+    ~direction: [@bs.string] [ | `up | `down | `left | `right]=?,
+    ~disabled: bool=?,
+    ~group: bool=?,
+    ~isOpen: bool=?,
+    ~tag: 'a=?,
+    ~toggle: ReactEvent.Mouse.t => unit=?,
+    unit
+  ) =>
+  _ =
   "";
 
-let make = (~isOpen=?, ~toggle=?, children) =>
+let make =
+    (
+      ~direction=?,
+      ~disabled=?,
+      ~group=?,
+      ~isOpen=?,
+      ~tag=?,
+      ~toggle=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=buttonDropdown,
-    ~props=makeProps(~isOpen?, ~toggle?, ()),
+    ~props=
+      makeProps(
+        ~direction?,
+        ~disabled?,
+        ~group?,
+        ~isOpen?,
+        ~tag?,
+        ~toggle?,
+        (),
+      ),
     children,
   );

@@ -5,6 +5,7 @@ external makeProps:
   (
     ~placement: 'a=?,
     ~target: 'b,
+    ~trigger: string=?,
     ~container: 'c=?,
     ~isOpen: bool=?,
     ~disabled: bool=?,
@@ -25,6 +26,7 @@ let make =
     (
       ~placement=?,
       ~target,
+      ~trigger=?,
       ~container=?,
       ~isOpen=?,
       ~disabled=?,
@@ -44,6 +46,7 @@ let make =
       makeProps(
         ~placement?,
         ~target,
+        ~trigger?,
         ~container?,
         ~isOpen?,
         ~disabled?,

@@ -3,7 +3,13 @@ external inputGroupAddon: ReasonReact.reactClass = "InputGroupAddon";
 
 [@bs.obj]
 external makeProps:
-  (~tag: 'a=?, ~addonType: 'b, ~className: string=?, ~cssModule: 'c=?, unit) =>
+  (
+    ~tag: 'a=?,
+    ~addonType: [@bs.string] [ | `prepend | `append],
+    ~className: string=?,
+    ~cssModule: 'c=?,
+    unit
+  ) =>
   _ =
   "";
 

@@ -5,8 +5,10 @@ external popperContent: ReasonReact.reactClass = "PopperContent";
 external makeProps:
   (
     ~className: string=?,
+    ~popperClassName: string=?,
     ~placement: string=?,
     ~placementPrefix: string=?,
+    ~arrowClassName: string=?,
     ~hideArrow: bool=?,
     ~tag: string=?,
     ~isOpen: bool,
@@ -17,6 +19,10 @@ external makeProps:
     ~container: 'd=?,
     ~target: 'e,
     ~modifiers: 'f=?,
+    ~boundariesElement: 'g=?,
+    ~onClosed: 'h=?,
+    ~fade: bool=?,
+    ~transition: 'i=?,
     unit
   ) =>
   _ =
@@ -25,6 +31,7 @@ external makeProps:
 let make =
     (
       ~className=?,
+      ~popperClassName=?,
       ~placement=?,
       ~placementPrefix=?,
       ~hideArrow=?,
@@ -37,6 +44,10 @@ let make =
       ~container=?,
       ~target,
       ~modifiers=?,
+      ~boundariesElement=?,
+      ~onClosed=?,
+      ~fade=?,
+      ~transition=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -44,6 +55,7 @@ let make =
     ~props=
       makeProps(
         ~className?,
+        ~popperClassName?,
         ~placement?,
         ~placementPrefix?,
         ~hideArrow?,
@@ -56,6 +68,10 @@ let make =
         ~container?,
         ~target,
         ~modifiers?,
+        ~boundariesElement?,
+        ~onClosed?,
+        ~fade?,
+        ~transition?,
         (),
       ),
     children,

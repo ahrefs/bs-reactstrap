@@ -7,14 +7,17 @@ external makeProps:
     ~noGutters: bool=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~form: bool=?,
     unit
   ) =>
   _ =
   "";
 
-let make = (~tag=?, ~noGutters=?, ~className=?, ~cssModule=?, children) =>
+let make =
+    (~tag=?, ~noGutters=?, ~className=?, ~cssModule=?, ~form=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=row,
-    ~props=makeProps(~tag?, ~noGutters?, ~className?, ~cssModule?, ()),
+    ~props=
+      makeProps(~tag?, ~noGutters?, ~className?, ~cssModule?, ~form?, ()),
     children,
   );

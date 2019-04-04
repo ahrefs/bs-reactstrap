@@ -5,17 +5,40 @@ external pagination: ReasonReact.reactClass = "Pagination";
 external makeProps:
   (
     ~className: string=?,
+    ~listClassName: string=?,
     ~cssModule: 'a=?,
     ~size: string=?,
     ~tag: 'b=?,
+    ~listTag: 'c=?,
+    ~ariaLabel: string=?,
     unit
   ) =>
   _ =
   "";
 
-let make = (~className=?, ~cssModule=?, ~size=?, ~tag=?, children) =>
+let make =
+    (
+      ~className=?,
+      ~listClassName=?,
+      ~cssModule=?,
+      ~size=?,
+      ~tag=?,
+      ~listTag=?,
+      ~ariaLabel=?,
+      children,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=pagination,
-    ~props=makeProps(~className?, ~cssModule?, ~size?, ~tag?, ()),
+    ~props=
+      makeProps(
+        ~className?,
+        ~listClassName?,
+        ~cssModule?,
+        ~size?,
+        ~tag?,
+        ~listTag?,
+        ~ariaLabel?,
+        (),
+      ),
     children,
   );

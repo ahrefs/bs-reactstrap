@@ -9,7 +9,7 @@ external makeProps:
     ~active: bool=?,
     ~className: string=?,
     ~cssModule: 'c=?,
-    ~onClick: 'd=?,
+    ~onClick: ReactEvent.Mouse.t => unit=?,
     ~href: 'e=?,
     unit
   ) =>

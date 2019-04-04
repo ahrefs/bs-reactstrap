@@ -15,6 +15,7 @@ external makeProps:
     ~responsive: 'c=?,
     ~tag: 'd=?,
     ~responsiveTag: 'e=?,
+    ~innerRef: 'f=?,
     unit
   ) =>
   _ =
@@ -34,6 +35,7 @@ let make =
       ~responsive=?,
       ~tag=?,
       ~responsiveTag=?,
+      ~innerRef=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -52,6 +54,7 @@ let make =
         ~responsive?,
         ~tag?,
         ~responsiveTag?,
+        ~innerRef?,
         (),
       ),
     children,
