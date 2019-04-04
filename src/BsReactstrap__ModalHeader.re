@@ -10,6 +10,8 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'd=?,
     ~closeAriaLabel: string=?,
+    ~charCode: 'e=?,
+    ~close: 'f=?,
     unit
   ) =>
   _ =
@@ -23,6 +25,8 @@ let make =
       ~className=?,
       ~cssModule=?,
       ~closeAriaLabel=?,
+      ~charCode=?,
+      ~close=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -35,6 +39,8 @@ let make =
         ~className?,
         ~cssModule?,
         ~closeAriaLabel?,
+        ~charCode?,
+        ~close?,
         (),
       ),
     children,
