@@ -17,6 +17,7 @@ external makeProps:
     ~placementPrefix: string=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
+    ~trigger: string=?,
     unit
   ) =>
   _ =
@@ -38,6 +39,7 @@ let make =
       ~placementPrefix=?,
       ~delay=?,
       ~modifiers=?,
+      ~trigger=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -58,6 +60,7 @@ let make =
         ~placementPrefix?,
         ~delay?,
         ~modifiers?,
+        ~trigger?,
         (),
       ),
     children,
