@@ -8,14 +8,16 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'a=?,
     ~valid: bool=?,
+    ~tooltip: bool=?,
     unit
   ) =>
   _ =
   "";
 
-let make = (~tag=?, ~className=?, ~cssModule=?, ~valid=?, children) =>
+let make =
+    (~tag=?, ~className=?, ~cssModule=?, ~valid=?, ~tooltip=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=formFeedback,
-    ~props=makeProps(~tag?, ~className?, ~cssModule?, ~valid?, ()),
+    ~props=makeProps(~tag?, ~className?, ~cssModule?, ~valid?, ~tooltip?, ()),
     children,
   );
