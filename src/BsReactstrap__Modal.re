@@ -6,6 +6,7 @@ external makeProps:
     ~isOpen: bool=?,
     ~autoFocus: bool=?,
     ~centered: bool=?,
+    ~scrollable: bool=?,
     ~size: string=?,
     ~toggle: 'a=?,
     ~keyboard: bool=?,
@@ -27,6 +28,9 @@ external makeProps:
     ~zIndex: 'i=?,
     ~backdropTransition: 'j=?,
     ~modalTransition: 'k=?,
+    ~innerRef: 'l=?,
+    ~unmountOnClose: bool=?,
+    ~returnFocusAfterClose: bool=?,
     unit
   ) =>
   _ =
@@ -37,6 +41,7 @@ let make =
       ~isOpen=?,
       ~autoFocus=?,
       ~centered=?,
+      ~scrollable=?,
       ~size=?,
       ~toggle=?,
       ~keyboard=?,
@@ -58,6 +63,9 @@ let make =
       ~zIndex=?,
       ~backdropTransition=?,
       ~modalTransition=?,
+      ~innerRef=?,
+      ~unmountOnClose=?,
+      ~returnFocusAfterClose=?,
       children,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -67,6 +75,7 @@ let make =
         ~isOpen?,
         ~autoFocus?,
         ~centered?,
+        ~scrollable?,
         ~size?,
         ~toggle?,
         ~keyboard?,
@@ -88,6 +97,9 @@ let make =
         ~zIndex?,
         ~backdropTransition?,
         ~modalTransition?,
+        ~innerRef?,
+        ~unmountOnClose?,
+        ~returnFocusAfterClose?,
         (),
       ),
     children,
