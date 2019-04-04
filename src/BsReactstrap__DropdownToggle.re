@@ -9,7 +9,7 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'a=?,
     ~disabled: bool=?,
-    ~onClick: 'b=?,
+    ~onClick: ReactEvent.Mouse.t => unit=?,
     ~ariaHaspopup: bool=?,
     ~split: bool=?,
     ~tag: 'c=?,
