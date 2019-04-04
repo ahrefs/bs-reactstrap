@@ -3,9 +3,20 @@
 [@bs.obj]
 external makeProps:
   (
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `succeess
+              | `danger
+              | `warning
+              | `info
+              | `light
+              | `dark
+            ]
+              =?,
     ~pill: bool=?,
     ~tag: 'a=?,
+    ~href: string=?,
     ~className: string=?,
     ~cssModule: 'b=?,
     unit
@@ -13,9 +24,11 @@ external makeProps:
   _ =
   "";
 
-let make = (~color=?, ~pill=?, ~tag=?, ~className=?, ~cssModule=?, children) =>
+let make =
+    (~color=?, ~pill=?, ~tag=?, ~href=?, ~className=?, ~cssModule=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=badge,
-    ~props=makeProps(~color?, ~pill?, ~tag?, ~className?, ~cssModule?, ()),
+    ~props=
+      makeProps(~color?, ~pill?, ~tag?, ~href?, ~className?, ~cssModule?, ()),
     children,
   );
