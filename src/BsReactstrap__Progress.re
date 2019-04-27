@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external progress: ReasonReact.reactClass = "Progress";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~bar: bool=?,
     ~multi: bool=?,
@@ -17,40 +14,5 @@ external makeProps:
     ~cssModule: 'c=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~bar=?,
-      ~multi=?,
-      ~tag=?,
-      ~value=?,
-      ~max=?,
-      ~animated=?,
-      ~striped=?,
-      ~color=?,
-      ~className=?,
-      ~barClassName=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=progress,
-    ~props=
-      makeProps(
-        ~bar?,
-        ~multi?,
-        ~tag?,
-        ~value?,
-        ~max?,
-        ~animated?,
-        ~striped?,
-        ~color?,
-        ~className?,
-        ~barClassName?,
-        ~cssModule?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Progress";

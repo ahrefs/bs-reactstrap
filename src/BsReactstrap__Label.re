@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external label: ReasonReact.reactClass = "Label";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~hidden: bool=?,
     ~check: bool=?,
@@ -18,44 +16,5 @@ external makeProps:
     ~widths: 'g=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~hidden=?,
-      ~check=?,
-      ~size=?,
-      ~for_=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      ~xs=?,
-      ~sm=?,
-      ~md=?,
-      ~lg=?,
-      ~xl=?,
-      ~widths=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=label,
-    ~props=
-      makeProps(
-        ~hidden?,
-        ~check?,
-        ~size?,
-        ~for_?,
-        ~tag?,
-        ~className?,
-        ~cssModule?,
-        ~xs?,
-        ~sm?,
-        ~md?,
-        ~lg?,
-        ~xl?,
-        ~widths?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Label";

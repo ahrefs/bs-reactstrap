@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external alert: ReasonReact.reactClass = "Alert";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~className: string=?,
     ~closeClassName: string=?,
@@ -14,36 +12,5 @@ external makeProps:
     ~transition: 'd=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~className=?,
-      ~closeClassName=?,
-      ~closeAriaLabel=?,
-      ~cssModule=?,
-      ~color=?,
-      ~isOpen=?,
-      ~toggle=?,
-      ~tag=?,
-      ~transition=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=alert,
-    ~props=
-      makeProps(
-        ~className?,
-        ~closeClassName?,
-        ~closeAriaLabel?,
-        ~cssModule?,
-        ~color?,
-        ~isOpen?,
-        ~toggle?,
-        ~tag?,
-        ~transition?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Alert";

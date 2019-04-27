@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external listGroupItem: ReasonReact.reactClass = "ListGroupItem";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~active: bool=?,
@@ -13,32 +10,5 @@ external makeProps:
     ~cssModule: 'c=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~tag=?,
-      ~active=?,
-      ~disabled=?,
-      ~color=?,
-      ~action=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=listGroupItem,
-    ~props=
-      makeProps(
-        ~tag?,
-        ~active?,
-        ~disabled?,
-        ~color?,
-        ~action?,
-        ~className?,
-        ~cssModule?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "ListGroupItem";

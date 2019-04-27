@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external button: ReasonReact.reactClass = "Button";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~active: bool=?,
     ~block: bool=?,
@@ -17,42 +15,5 @@ external makeProps:
     ~cssModule: 'd=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~active=?,
-      ~block=?,
-      ~color=?,
-      ~disabled=?,
-      ~outline=?,
-      ~tag=?,
-      ~id=?,
-      ~innerRef=?,
-      ~onClick=?,
-      ~size=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=button,
-    ~props=
-      makeProps(
-        ~active?,
-        ~block?,
-        ~color?,
-        ~disabled?,
-        ~outline?,
-        ~tag?,
-        ~id?,
-        ~innerRef?,
-        ~onClick?,
-        ~size?,
-        ~className?,
-        ~cssModule?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Button";

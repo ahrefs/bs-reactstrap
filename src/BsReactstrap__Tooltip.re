@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external tooltip: ReasonReact.reactClass = "Tooltip";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~placement: 'a=?,
     ~target: 'b,
@@ -19,46 +17,5 @@ external makeProps:
     ~modifiers: 'g=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~placement=?,
-      ~target,
-      ~container=?,
-      ~isOpen=?,
-      ~disabled=?,
-      ~hideArrow=?,
-      ~className=?,
-      ~innerClassName=?,
-      ~cssModule=?,
-      ~toggle=?,
-      ~autohide=?,
-      ~placementPrefix=?,
-      ~delay=?,
-      ~modifiers=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=tooltip,
-    ~props=
-      makeProps(
-        ~placement?,
-        ~target,
-        ~container?,
-        ~isOpen?,
-        ~disabled?,
-        ~hideArrow?,
-        ~className?,
-        ~innerClassName?,
-        ~cssModule?,
-        ~toggle?,
-        ~autohide?,
-        ~placementPrefix?,
-        ~delay?,
-        ~modifiers?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Tooltip";

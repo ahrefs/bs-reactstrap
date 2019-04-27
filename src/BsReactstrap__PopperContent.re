@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external popperContent: ReasonReact.reactClass = "PopperContent";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~className: string=?,
     ~placement: string=?,
@@ -19,44 +16,5 @@ external makeProps:
     ~modifiers: 'f=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~className=?,
-      ~placement=?,
-      ~placementPrefix=?,
-      ~hideArrow=?,
-      ~tag=?,
-      ~isOpen,
-      ~cssModule=?,
-      ~offset=?,
-      ~fallbackPlacement=?,
-      ~flip=?,
-      ~container=?,
-      ~target,
-      ~modifiers=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=popperContent,
-    ~props=
-      makeProps(
-        ~className?,
-        ~placement?,
-        ~placementPrefix?,
-        ~hideArrow?,
-        ~tag?,
-        ~isOpen,
-        ~cssModule?,
-        ~offset?,
-        ~fallbackPlacement?,
-        ~flip?,
-        ~container?,
-        ~target,
-        ~modifiers?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "PopperContent";

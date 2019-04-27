@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external modal: ReasonReact.reactClass = "Modal";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~isOpen: bool=?,
     ~autoFocus: bool=?,
@@ -29,66 +27,5 @@ external makeProps:
     ~modalTransition: 'k=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~isOpen=?,
-      ~autoFocus=?,
-      ~centered=?,
-      ~size=?,
-      ~toggle=?,
-      ~keyboard=?,
-      ~role=?,
-      ~labelledBy=?,
-      ~backdrop=?,
-      ~onEnter=?,
-      ~onExit=?,
-      ~onOpened=?,
-      ~onClosed=?,
-      ~className=?,
-      ~wrapClassName=?,
-      ~modalClassName=?,
-      ~backdropClassName=?,
-      ~contentClassName=?,
-      ~external_=?,
-      ~fade=?,
-      ~cssModule=?,
-      ~zIndex=?,
-      ~backdropTransition=?,
-      ~modalTransition=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=modal,
-    ~props=
-      makeProps(
-        ~isOpen?,
-        ~autoFocus?,
-        ~centered?,
-        ~size?,
-        ~toggle?,
-        ~keyboard?,
-        ~role?,
-        ~labelledBy?,
-        ~backdrop?,
-        ~onEnter?,
-        ~onExit?,
-        ~onOpened?,
-        ~onClosed?,
-        ~className?,
-        ~wrapClassName?,
-        ~modalClassName?,
-        ~backdropClassName?,
-        ~contentClassName?,
-        ~external_?,
-        ~fade?,
-        ~cssModule?,
-        ~zIndex?,
-        ~backdropTransition?,
-        ~modalTransition?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Modal";

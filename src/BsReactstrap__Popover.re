@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external popover: ReasonReact.reactClass = "Popover";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~placement: 'a=?,
     ~target: 'b,
@@ -18,44 +16,5 @@ external makeProps:
     ~modifiers: 'g=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~placement=?,
-      ~target,
-      ~container=?,
-      ~isOpen=?,
-      ~disabled=?,
-      ~hideArrow=?,
-      ~className=?,
-      ~innerClassName=?,
-      ~placementPrefix=?,
-      ~cssModule=?,
-      ~toggle=?,
-      ~delay=?,
-      ~modifiers=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=popover,
-    ~props=
-      makeProps(
-        ~placement?,
-        ~target,
-        ~container?,
-        ~isOpen?,
-        ~disabled?,
-        ~hideArrow?,
-        ~className?,
-        ~innerClassName?,
-        ~placementPrefix?,
-        ~cssModule?,
-        ~toggle?,
-        ~delay?,
-        ~modifiers?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Popover";

@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external dropdownToggle: ReasonReact.reactClass = "DropdownToggle";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~caret: bool=?,
     ~color: string=?,
@@ -16,38 +13,5 @@ external makeProps:
     ~nav: bool=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~caret=?,
-      ~color=?,
-      ~className=?,
-      ~cssModule=?,
-      ~disabled=?,
-      ~onClick=?,
-      ~ariaHaspopup=?,
-      ~split=?,
-      ~tag=?,
-      ~nav=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=dropdownToggle,
-    ~props=
-      makeProps(
-        ~caret?,
-        ~color?,
-        ~className?,
-        ~cssModule?,
-        ~disabled?,
-        ~onClick?,
-        ~ariaHaspopup?,
-        ~split?,
-        ~tag?,
-        ~nav?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "DropdownToggle";

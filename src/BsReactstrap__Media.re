@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external media: ReasonReact.reactClass = "Media";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~body: bool=?,
     ~bottom: bool=?,
@@ -17,42 +15,5 @@ external makeProps:
     ~top: bool=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~body=?,
-      ~bottom=?,
-      ~className=?,
-      ~cssModule=?,
-      ~heading=?,
-      ~left=?,
-      ~list=?,
-      ~middle=?,
-      ~object_=?,
-      ~right=?,
-      ~tag=?,
-      ~top=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=media,
-    ~props=
-      makeProps(
-        ~body?,
-        ~bottom?,
-        ~className?,
-        ~cssModule?,
-        ~heading?,
-        ~left?,
-        ~list?,
-        ~middle?,
-        ~object_?,
-        ~right?,
-        ~tag?,
-        ~top?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Media";

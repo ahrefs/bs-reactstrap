@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external fade: ReasonReact.reactClass = "Fade";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~baseClass: string=?,
@@ -10,28 +8,5 @@ external makeProps:
     ~cssModule: 'b=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~tag=?,
-      ~baseClass=?,
-      ~baseClassActive=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=fade,
-    ~props=
-      makeProps(
-        ~tag?,
-        ~baseClass?,
-        ~baseClassActive?,
-        ~className?,
-        ~cssModule?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Fade";

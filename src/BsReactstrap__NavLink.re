@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external navLink: ReasonReact.reactClass = "NavLink";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~innerRef: 'b=?,
@@ -13,34 +11,5 @@ external makeProps:
     ~href: 'e=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~tag=?,
-      ~innerRef=?,
-      ~disabled=?,
-      ~active=?,
-      ~className=?,
-      ~cssModule=?,
-      ~onClick=?,
-      ~href=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=navLink,
-    ~props=
-      makeProps(
-        ~tag?,
-        ~innerRef?,
-        ~disabled?,
-        ~active?,
-        ~className?,
-        ~cssModule?,
-        ~onClick?,
-        ~href?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "NavLink";

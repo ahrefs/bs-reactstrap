@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external input: ReasonReact.reactClass = "Input";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~_type: string=?,
     ~size: string=?,
@@ -29,66 +27,5 @@ external makeProps:
     ~readOnly: bool=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~type_=?,
-      ~size=?,
-      ~bsSize=?,
-      ~state=?,
-      ~valid=?,
-      ~invalid=?,
-      ~tag=?,
-      ~innerRef=?,
-      ~static=?,
-      ~plaintext=?,
-      ~addon=?,
-      ~onChange=?,
-      ~onBlur=?,
-      ~onFocus=?,
-      ~placeholder=?,
-      ~value=?,
-      ~min=?,
-      ~max=?,
-      ~rows=?,
-      ~name=?,
-      ~id=?,
-      ~className=?,
-      ~cssModule=?,
-      ~readOnly=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=input,
-    ~props=
-      makeProps(
-        ~_type=?type_,
-        ~size?,
-        ~bsSize?,
-        ~state?,
-        ~valid?,
-        ~invalid?,
-        ~tag?,
-        ~innerRef?,
-        ~static?,
-        ~plaintext?,
-        ~addon?,
-        ~onChange?,
-        ~onBlur?,
-        ~onFocus?,
-        ~placeholder?,
-        ~value?,
-        ~min?,
-        ~max?,
-        ~rows?,
-        ~name?,
-        ~id?,
-        ~className?,
-        ~cssModule?,
-        ~readOnly?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Input";

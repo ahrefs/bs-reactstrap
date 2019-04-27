@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external uncontrolledCarousel: ReasonReact.reactClass = "UncontrolledCarousel";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~items: 'a,
     ~indicators: bool=?,
@@ -14,34 +11,5 @@ external makeProps:
     ~goToIndex: 'e=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~items,
-      ~indicators=?,
-      ~controls=?,
-      ~autoPlay=?,
-      ~activeIndex=?,
-      ~next=?,
-      ~previous=?,
-      ~goToIndex=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=uncontrolledCarousel,
-    ~props=
-      makeProps(
-        ~items,
-        ~indicators?,
-        ~controls?,
-        ~autoPlay?,
-        ~activeIndex?,
-        ~next?,
-        ~previous?,
-        ~goToIndex?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "UncontrolledCarousel";

@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external buttonGroup: ReasonReact.reactClass = "ButtonGroup";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~ariaLabel: string=?,
@@ -13,32 +10,5 @@ external makeProps:
     ~vertical: bool=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~tag=?,
-      ~ariaLabel=?,
-      ~className=?,
-      ~cssModule=?,
-      ~role=?,
-      ~size=?,
-      ~vertical=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=buttonGroup,
-    ~props=
-      makeProps(
-        ~tag?,
-        ~ariaLabel?,
-        ~className?,
-        ~cssModule?,
-        ~role?,
-        ~size?,
-        ~vertical?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "ButtonGroup";

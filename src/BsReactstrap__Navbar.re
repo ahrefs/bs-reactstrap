@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external navbar: ReasonReact.reactClass = "Navbar";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~light: bool=?,
     ~dark: bool=?,
@@ -18,44 +16,5 @@ external makeProps:
     ~expand: 'e=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~light=?,
-      ~dark=?,
-      ~inverse=?,
-      ~full=?,
-      ~fixed=?,
-      ~sticky=?,
-      ~color=?,
-      ~role=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      ~toggleable=?,
-      ~expand=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=navbar,
-    ~props=
-      makeProps(
-        ~light?,
-        ~dark?,
-        ~inverse?,
-        ~full?,
-        ~fixed?,
-        ~sticky?,
-        ~color?,
-        ~role?,
-        ~tag?,
-        ~className?,
-        ~cssModule?,
-        ~toggleable?,
-        ~expand?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Navbar";

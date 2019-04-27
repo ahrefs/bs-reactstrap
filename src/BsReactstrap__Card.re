@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external card: ReasonReact.reactClass = "Card";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~inverse: bool=?,
@@ -13,34 +11,5 @@ external makeProps:
     ~cssModule: 'c=?,
     unit
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~tag=?,
-      ~inverse=?,
-      ~color=?,
-      ~block=?,
-      ~body=?,
-      ~outline=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=card,
-    ~props=
-      makeProps(
-        ~tag?,
-        ~inverse?,
-        ~color?,
-        ~block?,
-        ~body?,
-        ~outline?,
-        ~className?,
-        ~cssModule?,
-        (),
-      ),
-    children,
-  );
+  React.element =
+  "Card";
