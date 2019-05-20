@@ -5,6 +5,7 @@ external make:
     ~noGutters: bool=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

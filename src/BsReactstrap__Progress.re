@@ -12,6 +12,7 @@ external make:
     ~className: string=?,
     ~barClassName: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

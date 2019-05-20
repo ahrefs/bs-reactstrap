@@ -6,6 +6,7 @@ external make:
     ~className: 'b=?,
     ~navbar: bool=?,
     ~cssModule: 'c=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

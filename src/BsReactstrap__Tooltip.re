@@ -15,6 +15,7 @@ external make:
     ~placementPrefix: string=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

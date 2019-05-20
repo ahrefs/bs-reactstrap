@@ -13,6 +13,7 @@ external make:
     ~size: string=?,
     ~className: string=?,
     ~cssModule: 'd=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

@@ -13,6 +13,7 @@ external make:
     ~responsive: 'c=?,
     ~tag: 'd=?,
     ~responsiveTag: 'e=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

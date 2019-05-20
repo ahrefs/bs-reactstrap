@@ -14,6 +14,7 @@ external make:
     ~cssModule: 'c=?,
     ~toggleable: 'd=?,
     ~expand: 'e=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

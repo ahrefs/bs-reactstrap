@@ -10,6 +10,7 @@ external make:
     ~toggle: 'b=?,
     ~tag: 'c=?,
     ~transition: 'd=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

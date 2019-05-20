@@ -9,6 +9,7 @@ external make:
     ~outline: bool=?,
     ~className: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

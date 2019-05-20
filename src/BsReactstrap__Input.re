@@ -25,6 +25,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'e=?,
     ~readOnly: bool=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

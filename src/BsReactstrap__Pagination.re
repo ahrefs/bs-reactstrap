@@ -5,6 +5,7 @@ external make:
     ~cssModule: 'a=?,
     ~size: string=?,
     ~tag: 'b=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

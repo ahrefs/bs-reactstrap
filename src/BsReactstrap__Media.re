@@ -13,6 +13,7 @@ external make:
     ~right: bool=?,
     ~tag: 'b=?,
     ~top: bool=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

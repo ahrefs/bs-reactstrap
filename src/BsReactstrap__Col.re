@@ -10,6 +10,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'g=?,
     ~widths: 'h=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

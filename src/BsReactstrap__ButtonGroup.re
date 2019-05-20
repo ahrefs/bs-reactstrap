@@ -8,6 +8,7 @@ external make:
     ~role: string=?,
     ~size: string=?,
     ~vertical: bool=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

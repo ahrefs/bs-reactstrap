@@ -14,6 +14,7 @@ external make:
     ~lg: 'e=?,
     ~xl: 'f=?,
     ~widths: 'g=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =
