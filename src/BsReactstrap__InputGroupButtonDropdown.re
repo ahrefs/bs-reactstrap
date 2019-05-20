@@ -1,3 +1,3 @@
 [@bs.module "reactstrap"]
-external make: (~addonType: 'a, unit) => React.element =
+external make: (~addonType: 'a, ~children: React.element=?, unit) => React.element =
   "InputGroupButtonDropdown";
