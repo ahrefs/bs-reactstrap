@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external label: ReasonReact.reactClass = "Label";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~hidden: bool=?,
     ~check: bool=?,
@@ -16,31 +14,35 @@ external makeProps:
     ~lg: 'e=?,
     ~xl: 'f=?,
     ~widths: 'g=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Label";
 
-let make =
-    (
-      ~hidden=?,
-      ~check=?,
-      ~size=?,
-      ~for_=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      ~xs=?,
-      ~sm=?,
-      ~md=?,
-      ~lg=?,
-      ~xl=?,
-      ~widths=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=label,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~hidden=?,
+        ~check=?,
+        ~size=?,
+        ~for_=?,
+        ~tag=?,
+        ~className=?,
+        ~cssModule=?,
+        ~xs=?,
+        ~sm=?,
+        ~md=?,
+        ~lg=?,
+        ~xl=?,
+        ~widths=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~hidden?,
         ~check?,
@@ -55,7 +57,10 @@ let make =
         ~lg?,
         ~xl?,
         ~widths?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

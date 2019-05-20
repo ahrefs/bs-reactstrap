@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external dropdownMenu: ReasonReact.reactClass = "DropdownMenu";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: string=?,
     ~right: bool=?,
@@ -10,24 +7,28 @@ external makeProps:
     ~modifiers: 'a=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "DropdownMenu";
 
-let make =
-    (
-      ~tag=?,
-      ~right=?,
-      ~flip=?,
-      ~modifiers=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=dropdownMenu,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tag=?,
+        ~right=?,
+        ~flip=?,
+        ~modifiers=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~tag?,
         ~right?,
@@ -35,7 +36,10 @@ let make =
         ~modifiers?,
         ~className?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

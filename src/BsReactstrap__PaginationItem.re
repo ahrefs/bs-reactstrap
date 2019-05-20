@@ -1,24 +1,35 @@
-[@bs.module "reactstrap"]
-external paginationItem: ReasonReact.reactClass = "PaginationItem";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~active: bool=?,
     ~className: string=?,
     ~cssModule: 'a=?,
     ~disabled: bool=?,
     ~tag: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "PaginationItem";
 
-let make =
-    (~active=?, ~className=?, ~cssModule=?, ~disabled=?, ~tag=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=paginationItem,
-    ~props=
-      makeProps(~active?, ~className?, ~cssModule?, ~disabled?, ~tag?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (~active=?, ~className=?, ~cssModule=?, ~disabled=?, ~tag=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~active?,
+        ~className?,
+        ~cssModule?,
+        ~disabled?,
+        ~tag?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

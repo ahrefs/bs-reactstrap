@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external formGroup: ReasonReact.reactClass = "FormGroup";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~row: bool=?,
     ~check: bool=?,
@@ -11,25 +8,29 @@ external makeProps:
     ~tag: string=?,
     ~className: string=?,
     ~cssModule: 'a=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "FormGroup";
 
-let make =
-    (
-      ~row=?,
-      ~check=?,
-      ~inline=?,
-      ~disabled=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=formGroup,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~row=?,
+        ~check=?,
+        ~inline=?,
+        ~disabled=?,
+        ~tag=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~row?,
         ~check?,
@@ -38,7 +39,10 @@ let make =
         ~tag?,
         ~className?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

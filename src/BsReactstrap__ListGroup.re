@@ -1,15 +1,63 @@
-[@bs.module "reactstrap"]
-external listGroup: ReasonReact.reactClass = "ListGroup";
+[@bs.module "reactstrap"] [@react.component]
+external make:
+  (
+    ~active: bool=?,
+    ~block: bool=?,
+    ~color: string=?,
+    ~disabled: bool=?,
+    ~outline: bool=?,
+    ~tag: 'a=?,
+    ~id: string=?,
+    ~innerRef: 'b=?,
+    ~onClick: 'c=?,
+    ~size: string=?,
+    ~className: string=?,
+    ~cssModule: 'd=?,
+    ~children: React.element,
+    unit
+  ) =>
+  React.element =
+  "Button";
 
-[@bs.obj]
-external makeProps:
-  (~tag: 'a=?, ~flush: bool=?, ~className: string=?, ~cssModule: 'b=?, unit) =>
-  _ =
-  "";
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
 
-let make = (~tag=?, ~flush=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=listGroup,
-    ~props=makeProps(~tag?, ~flush?, ~className?, ~cssModule?, ()),
-    children,
-  );
+  let make =
+      (
+        ~active=?,
+        ~block=?,
+        ~color=?,
+        ~disabled=?,
+        ~outline=?,
+        ~tag=?,
+        ~id=?,
+        ~innerRef=?,
+        ~onClick=?,
+        ~size=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~active?,
+        ~block?,
+        ~color?,
+        ~disabled?,
+        ~outline?,
+        ~tag?,
+        ~id?,
+        ~innerRef?,
+        ~onClick?,
+        ~size?,
+        ~className?,
+        ~cssModule?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external popover: ReasonReact.reactClass = "Popover";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~placement: 'a=?,
     ~target: 'b,
@@ -16,31 +14,35 @@ external makeProps:
     ~toggle: 'e=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Popover";
 
-let make =
-    (
-      ~placement=?,
-      ~target,
-      ~container=?,
-      ~isOpen=?,
-      ~disabled=?,
-      ~hideArrow=?,
-      ~className=?,
-      ~innerClassName=?,
-      ~placementPrefix=?,
-      ~cssModule=?,
-      ~toggle=?,
-      ~delay=?,
-      ~modifiers=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=popover,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~placement=?,
+        ~target,
+        ~container=?,
+        ~isOpen=?,
+        ~disabled=?,
+        ~hideArrow=?,
+        ~className=?,
+        ~innerClassName=?,
+        ~placementPrefix=?,
+        ~cssModule=?,
+        ~toggle=?,
+        ~delay=?,
+        ~modifiers=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~placement?,
         ~target,
@@ -55,7 +57,10 @@ let make =
         ~toggle?,
         ~delay?,
         ~modifiers?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

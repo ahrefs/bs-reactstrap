@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external table: ReasonReact.reactClass = "Table";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~className: string=?,
     ~cssModule: 'a=?,
@@ -15,30 +13,34 @@ external makeProps:
     ~responsive: 'c=?,
     ~tag: 'd=?,
     ~responsiveTag: 'e=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Table";
 
-let make =
-    (
-      ~className=?,
-      ~cssModule=?,
-      ~size=?,
-      ~bordered=?,
-      ~borderless=?,
-      ~striped=?,
-      ~inverse=?,
-      ~dark=?,
-      ~hover=?,
-      ~responsive=?,
-      ~tag=?,
-      ~responsiveTag=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=table,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~className=?,
+        ~cssModule=?,
+        ~size=?,
+        ~bordered=?,
+        ~borderless=?,
+        ~striped=?,
+        ~inverse=?,
+        ~dark=?,
+        ~hover=?,
+        ~responsive=?,
+        ~tag=?,
+        ~responsiveTag=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~className?,
         ~cssModule?,
@@ -52,7 +54,10 @@ let make =
         ~responsive?,
         ~tag?,
         ~responsiveTag?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

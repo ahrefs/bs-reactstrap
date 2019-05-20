@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external form: ReasonReact.reactClass = "Form";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~inline: bool=?,
     ~onSubmit: ReactEvent.Form.t => unit=?,
@@ -9,24 +7,28 @@ external makeProps:
     ~innerRef: 'b=?,
     ~className: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Form";
 
-let make =
-    (
-      ~inline=?,
-      ~onSubmit=?,
-      ~tag=?,
-      ~innerRef=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=form,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~inline=?,
+        ~onSubmit=?,
+        ~tag=?,
+        ~innerRef=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~inline?,
         ~onSubmit?,
@@ -34,7 +36,10 @@ let make =
         ~innerRef?,
         ~className?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

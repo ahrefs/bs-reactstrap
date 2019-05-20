@@ -1,20 +1,25 @@
-[@bs.module "reactstrap"] external row: ReasonReact.reactClass = "Row";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~noGutters: bool=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Row";
 
-let make = (~tag=?, ~noGutters=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=row,
-    ~props=makeProps(~tag?, ~noGutters?, ~className?, ~cssModule?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~tag=?, ~noGutters=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~noGutters?, ~className?, ~cssModule?, ~children, ()),
+      children,
+    );
+  };
+};

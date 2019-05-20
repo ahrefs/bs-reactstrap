@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external progress: ReasonReact.reactClass = "Progress";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~bar: bool=?,
     ~multi: bool=?,
@@ -15,29 +12,33 @@ external makeProps:
     ~className: string=?,
     ~barClassName: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Progress";
 
-let make =
-    (
-      ~bar=?,
-      ~multi=?,
-      ~tag=?,
-      ~value=?,
-      ~max=?,
-      ~animated=?,
-      ~striped=?,
-      ~color=?,
-      ~className=?,
-      ~barClassName=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=progress,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~bar=?,
+        ~multi=?,
+        ~tag=?,
+        ~value=?,
+        ~max=?,
+        ~animated=?,
+        ~striped=?,
+        ~color=?,
+        ~className=?,
+        ~barClassName=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~bar?,
         ~multi?,
@@ -50,7 +51,10 @@ let make =
         ~className?,
         ~barClassName?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

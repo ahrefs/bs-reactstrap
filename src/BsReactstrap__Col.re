@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external col: ReasonReact.reactClass = "Col";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~xs: 'b=?,
@@ -12,27 +10,31 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'g=?,
     ~widths: 'h=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Col";
 
-let make =
-    (
-      ~tag=?,
-      ~xs=?,
-      ~sm=?,
-      ~md=?,
-      ~lg=?,
-      ~xl=?,
-      ~className=?,
-      ~cssModule=?,
-      ~widths=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=col,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tag=?,
+        ~xs=?,
+        ~sm=?,
+        ~md=?,
+        ~lg=?,
+        ~xl=?,
+        ~className=?,
+        ~cssModule=?,
+        ~widths=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~tag?,
         ~xs?,
@@ -43,7 +45,10 @@ let make =
         ~className?,
         ~cssModule?,
         ~widths?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

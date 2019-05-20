@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external navbar: ReasonReact.reactClass = "Navbar";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~light: bool=?,
     ~dark: bool=?,
@@ -16,31 +14,35 @@ external makeProps:
     ~cssModule: 'c=?,
     ~toggleable: 'd=?,
     ~expand: 'e=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Navbar";
 
-let make =
-    (
-      ~light=?,
-      ~dark=?,
-      ~inverse=?,
-      ~full=?,
-      ~fixed=?,
-      ~sticky=?,
-      ~color=?,
-      ~role=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      ~toggleable=?,
-      ~expand=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=navbar,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~light=?,
+        ~dark=?,
+        ~inverse=?,
+        ~full=?,
+        ~fixed=?,
+        ~sticky=?,
+        ~color=?,
+        ~role=?,
+        ~tag=?,
+        ~className=?,
+        ~cssModule=?,
+        ~toggleable=?,
+        ~expand=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~light?,
         ~dark?,
@@ -55,7 +57,10 @@ let make =
         ~cssModule?,
         ~toggleable?,
         ~expand?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

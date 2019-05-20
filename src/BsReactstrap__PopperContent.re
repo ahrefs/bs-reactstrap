@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external popperContent: ReasonReact.reactClass = "PopperContent";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~className: string=?,
     ~placement: string=?,
@@ -17,31 +14,35 @@ external makeProps:
     ~container: 'd=?,
     ~target: 'e,
     ~modifiers: 'f=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "PopperContent";
 
-let make =
-    (
-      ~className=?,
-      ~placement=?,
-      ~placementPrefix=?,
-      ~hideArrow=?,
-      ~tag=?,
-      ~isOpen,
-      ~cssModule=?,
-      ~offset=?,
-      ~fallbackPlacement=?,
-      ~flip=?,
-      ~container=?,
-      ~target,
-      ~modifiers=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=popperContent,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~className=?,
+        ~placement=?,
+        ~placementPrefix=?,
+        ~hideArrow=?,
+        ~tag=?,
+        ~isOpen,
+        ~cssModule=?,
+        ~offset=?,
+        ~fallbackPlacement=?,
+        ~flip=?,
+        ~container=?,
+        ~target,
+        ~modifiers=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~className?,
         ~placement?,
@@ -56,7 +57,10 @@ let make =
         ~container?,
         ~target,
         ~modifiers?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

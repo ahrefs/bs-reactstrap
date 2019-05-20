@@ -1,21 +1,25 @@
-[@bs.module "reactstrap"]
-external tabContent: ReasonReact.reactClass = "TabContent";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~activeTab: 'b=?,
     ~className: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "TabContent";
 
-let make = (~tag=?, ~activeTab=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=tabContent,
-    ~props=makeProps(~tag?, ~activeTab?, ~className?, ~cssModule?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~tag=?, ~activeTab=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~activeTab?, ~className?, ~cssModule?, ~children, ()),
+      children,
+    );
+  };
+};

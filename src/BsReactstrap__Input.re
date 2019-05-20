@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external input: ReasonReact.reactClass = "Input";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~_type: string=?,
     ~size: string=?,
@@ -27,44 +25,48 @@ external makeProps:
     ~className: string=?,
     ~cssModule: 'e=?,
     ~readOnly: bool=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Input";
 
-let make =
-    (
-      ~type_=?,
-      ~size=?,
-      ~bsSize=?,
-      ~state=?,
-      ~valid=?,
-      ~invalid=?,
-      ~tag=?,
-      ~innerRef=?,
-      ~static=?,
-      ~plaintext=?,
-      ~addon=?,
-      ~onChange=?,
-      ~onBlur=?,
-      ~onFocus=?,
-      ~placeholder=?,
-      ~value=?,
-      ~min=?,
-      ~max=?,
-      ~rows=?,
-      ~name=?,
-      ~id=?,
-      ~className=?,
-      ~cssModule=?,
-      ~readOnly=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=input,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~_type=?,
+        ~size=?,
+        ~bsSize=?,
+        ~state=?,
+        ~valid=?,
+        ~invalid=?,
+        ~tag=?,
+        ~innerRef=?,
+        ~static=?,
+        ~plaintext=?,
+        ~addon=?,
+        ~onChange=?,
+        ~onBlur=?,
+        ~onFocus=?,
+        ~placeholder=?,
+        ~value=?,
+        ~min=?,
+        ~max=?,
+        ~rows=?,
+        ~name=?,
+        ~id=?,
+        ~className=?,
+        ~cssModule=?,
+        ~readOnly=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
-        ~_type=?type_,
+        ~_type?,
         ~size?,
         ~bsSize?,
         ~state?,
@@ -88,7 +90,10 @@ let make =
         ~className?,
         ~cssModule?,
         ~readOnly?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

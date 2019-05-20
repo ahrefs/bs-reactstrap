@@ -1,14 +1,24 @@
-[@bs.module "reactstrap"]
-external cardHeader: ReasonReact.reactClass = "CardHeader";
+[@bs.module "reactstrap"] [@react.component]
+external make:
+  (
+    ~tag: 'a=?,
+    ~className: string=?,
+    ~cssModule: 'b=?,
+    ~children: React.element,
+    unit
+  ) =>
+  React.element =
+  "CardHeader";
 
-[@bs.obj]
-external makeProps:
-  (~tag: 'a=?, ~className: string=?, ~cssModule: 'b=?, unit) => _ =
-  "";
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
 
-let make = (~tag=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=cardHeader,
-    ~props=makeProps(~tag?, ~className?, ~cssModule?, ()),
-    children,
-  );
+  let make = (~tag=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~className?, ~cssModule?, ~children, ()),
+      children,
+    );
+  };
+};

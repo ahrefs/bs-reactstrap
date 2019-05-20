@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external modal: ReasonReact.reactClass = "Modal";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~isOpen: bool=?,
     ~autoFocus: bool=?,
@@ -27,42 +25,46 @@ external makeProps:
     ~zIndex: 'i=?,
     ~backdropTransition: 'j=?,
     ~modalTransition: 'k=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Modal";
 
-let make =
-    (
-      ~isOpen=?,
-      ~autoFocus=?,
-      ~centered=?,
-      ~size=?,
-      ~toggle=?,
-      ~keyboard=?,
-      ~role=?,
-      ~labelledBy=?,
-      ~backdrop=?,
-      ~onEnter=?,
-      ~onExit=?,
-      ~onOpened=?,
-      ~onClosed=?,
-      ~className=?,
-      ~wrapClassName=?,
-      ~modalClassName=?,
-      ~backdropClassName=?,
-      ~contentClassName=?,
-      ~external_=?,
-      ~fade=?,
-      ~cssModule=?,
-      ~zIndex=?,
-      ~backdropTransition=?,
-      ~modalTransition=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=modal,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~isOpen=?,
+        ~autoFocus=?,
+        ~centered=?,
+        ~size=?,
+        ~toggle=?,
+        ~keyboard=?,
+        ~role=?,
+        ~labelledBy=?,
+        ~backdrop=?,
+        ~onEnter=?,
+        ~onExit=?,
+        ~onOpened=?,
+        ~onClosed=?,
+        ~className=?,
+        ~wrapClassName=?,
+        ~modalClassName=?,
+        ~backdropClassName=?,
+        ~contentClassName=?,
+        ~external_=?,
+        ~fade=?,
+        ~cssModule=?,
+        ~zIndex=?,
+        ~backdropTransition=?,
+        ~modalTransition=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~isOpen?,
         ~autoFocus?,
@@ -88,7 +90,10 @@ let make =
         ~zIndex?,
         ~backdropTransition?,
         ~modalTransition?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external paginationLink: ReasonReact.reactClass = "PaginationLink";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~ariaLabel: string=?,
     ~className: string=?,
@@ -10,24 +7,28 @@ external makeProps:
     ~next: bool=?,
     ~previous: bool=?,
     ~tag: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "PaginationLink";
 
-let make =
-    (
-      ~ariaLabel=?,
-      ~className=?,
-      ~cssModule=?,
-      ~next=?,
-      ~previous=?,
-      ~tag=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=paginationLink,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~ariaLabel=?,
+        ~className=?,
+        ~cssModule=?,
+        ~next=?,
+        ~previous=?,
+        ~tag=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~ariaLabel?,
         ~className?,
@@ -35,7 +36,10 @@ let make =
         ~next?,
         ~previous?,
         ~tag?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

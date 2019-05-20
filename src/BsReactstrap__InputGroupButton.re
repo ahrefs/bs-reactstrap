@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external inputGroupButton: ReasonReact.reactClass = "InputGroupButton";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~addonType: 'b,
@@ -10,24 +7,28 @@ external makeProps:
     ~groupAttributes: 'c=?,
     ~className: string=?,
     ~cssModule: 'd=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "InputGroupButton";
 
-let make =
-    (
-      ~tag=?,
-      ~addonType,
-      ~groupClassName=?,
-      ~groupAttributes=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=inputGroupButton,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tag=?,
+        ~addonType,
+        ~groupClassName=?,
+        ~groupAttributes=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~tag?,
         ~addonType,
@@ -35,7 +36,10 @@ let make =
         ~groupAttributes?,
         ~className?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

@@ -1,21 +1,25 @@
-[@bs.module "reactstrap"]
-external navbarBrand: ReasonReact.reactClass = "NavbarBrand";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~className: string=?,
     ~cssModule: 'b=?,
     ~href: string=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "NavbarBrand";
 
-let make = (~tag=?, ~className=?, ~cssModule=?, ~href=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=navbarBrand,
-    ~props=makeProps(~tag?, ~className?, ~cssModule?, ~href?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~tag=?, ~className=?, ~cssModule=?, ~href=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~className?, ~cssModule?, ~href?, ~children, ()),
+      children,
+    );
+  };
+};

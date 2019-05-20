@@ -1,12 +1,17 @@
-[@bs.module "reactstrap"]
-external inputGroupButtonDropdown: ReasonReact.reactClass =
+[@bs.module "reactstrap"] [@react.component]
+external make:
+  (~addonType: 'a, ~children: React.element, unit) => React.element =
   "InputGroupButtonDropdown";
 
-[@bs.obj] external makeProps: (~addonType: 'a, unit) => _ = "";
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
 
-let make = (~addonType, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=inputGroupButtonDropdown,
-    ~props=makeProps(~addonType, ()),
-    children,
-  );
+  let make = (~addonType, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~addonType, ~children, ()),
+      children,
+    );
+  };
+};

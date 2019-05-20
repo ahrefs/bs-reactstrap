@@ -1,21 +1,25 @@
-[@bs.module "reactstrap"]
-external breadcrumbItem: ReasonReact.reactClass = "BreadcrumbItem";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~active: bool=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "BreadcrumbItem";
 
-let make = (~tag=?, ~active=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=breadcrumbItem,
-    ~props=makeProps(~tag?, ~active?, ~className?, ~cssModule?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~tag=?, ~active=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~active?, ~className?, ~cssModule?, ~children, ()),
+      children,
+    );
+  };
+};

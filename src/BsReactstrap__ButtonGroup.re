@@ -1,8 +1,5 @@
-[@bs.module "reactstrap"]
-external buttonGroup: ReasonReact.reactClass = "ButtonGroup";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~ariaLabel: string=?,
@@ -11,25 +8,29 @@ external makeProps:
     ~role: string=?,
     ~size: string=?,
     ~vertical: bool=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "ButtonGroup";
 
-let make =
-    (
-      ~tag=?,
-      ~ariaLabel=?,
-      ~className=?,
-      ~cssModule=?,
-      ~role=?,
-      ~size=?,
-      ~vertical=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=buttonGroup,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tag=?,
+        ~ariaLabel=?,
+        ~className=?,
+        ~cssModule=?,
+        ~role=?,
+        ~size=?,
+        ~vertical=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~tag?,
         ~ariaLabel?,
@@ -38,7 +39,10 @@ let make =
         ~role?,
         ~size?,
         ~vertical?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

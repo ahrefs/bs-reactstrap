@@ -1,21 +1,25 @@
-[@bs.module "reactstrap"]
-external inputGroup: ReasonReact.reactClass = "InputGroup";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tag: 'a=?,
     ~size: string=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "InputGroup";
 
-let make = (~tag=?, ~size=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=inputGroup,
-    ~props=makeProps(~tag?, ~size?, ~className?, ~cssModule?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~tag=?, ~size=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(~tag?, ~size?, ~className?, ~cssModule?, ~children, ()),
+      children,
+    );
+  };
+};

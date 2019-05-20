@@ -1,7 +1,5 @@
-[@bs.module "reactstrap"] external nav: ReasonReact.reactClass = "Nav";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~tabs: bool=?,
     ~pills: bool=?,
@@ -14,29 +12,33 @@ external makeProps:
     ~tag: 'b=?,
     ~className: string=?,
     ~cssModule: 'c=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Nav";
 
-let make =
-    (
-      ~tabs=?,
-      ~pills=?,
-      ~vertical=?,
-      ~horizontal=?,
-      ~justified=?,
-      ~fill=?,
-      ~navbar=?,
-      ~card=?,
-      ~tag=?,
-      ~className=?,
-      ~cssModule=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=nav,
-    ~props=
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tabs=?,
+        ~pills=?,
+        ~vertical=?,
+        ~horizontal=?,
+        ~justified=?,
+        ~fill=?,
+        ~navbar=?,
+        ~card=?,
+        ~tag=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
       makeProps(
         ~tabs?,
         ~pills?,
@@ -49,7 +51,10 @@ let make =
         ~tag?,
         ~className?,
         ~cssModule?,
+        ~children,
         (),
       ),
-    children,
-  );
+      children,
+    );
+  };
+};

@@ -1,21 +1,34 @@
-[@bs.module "reactstrap"] external badge: ReasonReact.reactClass = "Badge";
-
-[@bs.obj]
-external makeProps:
+[@bs.module "reactstrap"] [@react.component]
+external make:
   (
     ~color: string=?,
     ~pill: bool=?,
     ~tag: 'a=?,
     ~className: string=?,
     ~cssModule: 'b=?,
+    ~children: React.element,
     unit
   ) =>
-  _ =
-  "";
+  React.element =
+  "Badge";
 
-let make = (~color=?, ~pill=?, ~tag=?, ~className=?, ~cssModule=?, children) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=badge,
-    ~props=makeProps(~color?, ~pill?, ~tag?, ~className?, ~cssModule?, ()),
-    children,
-  );
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make = (~color=?, ~pill=?, ~tag=?, ~className=?, ~cssModule=?, children) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~color?,
+        ~pill?,
+        ~tag?,
+        ~className?,
+        ~cssModule?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};
