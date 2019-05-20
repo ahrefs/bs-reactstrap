@@ -14,8 +14,53 @@ external make:
     ~container: 'd=?,
     ~target: 'e,
     ~modifiers: 'f=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "PopperContent";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~className=?,
+        ~placement=?,
+        ~placementPrefix=?,
+        ~hideArrow=?,
+        ~tag=?,
+        ~isOpen,
+        ~cssModule=?,
+        ~offset=?,
+        ~fallbackPlacement=?,
+        ~flip=?,
+        ~container=?,
+        ~target,
+        ~modifiers=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~className?,
+        ~placement?,
+        ~placementPrefix?,
+        ~hideArrow?,
+        ~tag?,
+        ~isOpen,
+        ~cssModule?,
+        ~offset?,
+        ~fallbackPlacement?,
+        ~flip?,
+        ~container?,
+        ~target,
+        ~modifiers?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

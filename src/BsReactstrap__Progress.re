@@ -12,8 +12,49 @@ external make:
     ~className: string=?,
     ~barClassName: string=?,
     ~cssModule: 'c=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Progress";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~bar=?,
+        ~multi=?,
+        ~tag=?,
+        ~value=?,
+        ~max=?,
+        ~animated=?,
+        ~striped=?,
+        ~color=?,
+        ~className=?,
+        ~barClassName=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~bar?,
+        ~multi?,
+        ~tag?,
+        ~value?,
+        ~max?,
+        ~animated?,
+        ~striped?,
+        ~color?,
+        ~className?,
+        ~barClassName?,
+        ~cssModule?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

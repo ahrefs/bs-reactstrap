@@ -25,8 +25,75 @@ external make:
     ~className: string=?,
     ~cssModule: 'e=?,
     ~readOnly: bool=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Input";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~_type=?,
+        ~size=?,
+        ~bsSize=?,
+        ~state=?,
+        ~valid=?,
+        ~invalid=?,
+        ~tag=?,
+        ~innerRef=?,
+        ~static=?,
+        ~plaintext=?,
+        ~addon=?,
+        ~onChange=?,
+        ~onBlur=?,
+        ~onFocus=?,
+        ~placeholder=?,
+        ~value=?,
+        ~min=?,
+        ~max=?,
+        ~rows=?,
+        ~name=?,
+        ~id=?,
+        ~className=?,
+        ~cssModule=?,
+        ~readOnly=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~_type?,
+        ~size?,
+        ~bsSize?,
+        ~state?,
+        ~valid?,
+        ~invalid?,
+        ~tag?,
+        ~innerRef?,
+        ~static?,
+        ~plaintext?,
+        ~addon?,
+        ~onChange?,
+        ~onBlur?,
+        ~onFocus?,
+        ~placeholder?,
+        ~value?,
+        ~min?,
+        ~max?,
+        ~rows?,
+        ~name?,
+        ~id?,
+        ~className?,
+        ~cssModule?,
+        ~readOnly?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

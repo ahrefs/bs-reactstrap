@@ -14,8 +14,53 @@ external make:
     ~toggle: 'e=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Popover";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~placement=?,
+        ~target,
+        ~container=?,
+        ~isOpen=?,
+        ~disabled=?,
+        ~hideArrow=?,
+        ~className=?,
+        ~innerClassName=?,
+        ~placementPrefix=?,
+        ~cssModule=?,
+        ~toggle=?,
+        ~delay=?,
+        ~modifiers=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~placement?,
+        ~target,
+        ~container?,
+        ~isOpen?,
+        ~disabled?,
+        ~hideArrow?,
+        ~className?,
+        ~innerClassName?,
+        ~placementPrefix?,
+        ~cssModule?,
+        ~toggle?,
+        ~delay?,
+        ~modifiers?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

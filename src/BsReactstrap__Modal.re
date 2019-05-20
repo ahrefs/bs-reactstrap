@@ -25,8 +25,75 @@ external make:
     ~zIndex: 'i=?,
     ~backdropTransition: 'j=?,
     ~modalTransition: 'k=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Modal";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~isOpen=?,
+        ~autoFocus=?,
+        ~centered=?,
+        ~size=?,
+        ~toggle=?,
+        ~keyboard=?,
+        ~role=?,
+        ~labelledBy=?,
+        ~backdrop=?,
+        ~onEnter=?,
+        ~onExit=?,
+        ~onOpened=?,
+        ~onClosed=?,
+        ~className=?,
+        ~wrapClassName=?,
+        ~modalClassName=?,
+        ~backdropClassName=?,
+        ~contentClassName=?,
+        ~external_=?,
+        ~fade=?,
+        ~cssModule=?,
+        ~zIndex=?,
+        ~backdropTransition=?,
+        ~modalTransition=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~isOpen?,
+        ~autoFocus?,
+        ~centered?,
+        ~size?,
+        ~toggle?,
+        ~keyboard?,
+        ~role?,
+        ~labelledBy?,
+        ~backdrop?,
+        ~onEnter?,
+        ~onExit?,
+        ~onOpened?,
+        ~onClosed?,
+        ~className?,
+        ~wrapClassName?,
+        ~modalClassName?,
+        ~backdropClassName?,
+        ~contentClassName?,
+        ~external_?,
+        ~fade?,
+        ~cssModule?,
+        ~zIndex?,
+        ~backdropTransition?,
+        ~modalTransition?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

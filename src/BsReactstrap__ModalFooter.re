@@ -13,8 +13,51 @@ external make:
     ~size: string=?,
     ~className: string=?,
     ~cssModule: 'd=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Button";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~active=?,
+        ~block=?,
+        ~color=?,
+        ~disabled=?,
+        ~outline=?,
+        ~tag=?,
+        ~id=?,
+        ~innerRef=?,
+        ~onClick=?,
+        ~size=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~active?,
+        ~block?,
+        ~color?,
+        ~disabled?,
+        ~outline?,
+        ~tag?,
+        ~id?,
+        ~innerRef?,
+        ~onClick?,
+        ~size?,
+        ~className?,
+        ~cssModule?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

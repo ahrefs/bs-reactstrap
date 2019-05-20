@@ -10,8 +10,45 @@ external make:
     ~className: string=?,
     ~cssModule: 'g=?,
     ~widths: 'h=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Col";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~tag=?,
+        ~xs=?,
+        ~sm=?,
+        ~md=?,
+        ~lg=?,
+        ~xl=?,
+        ~className=?,
+        ~cssModule=?,
+        ~widths=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~tag?,
+        ~xs?,
+        ~sm?,
+        ~md?,
+        ~lg?,
+        ~xl?,
+        ~className?,
+        ~cssModule?,
+        ~widths?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

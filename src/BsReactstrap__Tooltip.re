@@ -15,8 +15,55 @@ external make:
     ~placementPrefix: string=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Tooltip";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~placement=?,
+        ~target,
+        ~container=?,
+        ~isOpen=?,
+        ~disabled=?,
+        ~hideArrow=?,
+        ~className=?,
+        ~innerClassName=?,
+        ~cssModule=?,
+        ~toggle=?,
+        ~autohide=?,
+        ~placementPrefix=?,
+        ~delay=?,
+        ~modifiers=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~placement?,
+        ~target,
+        ~container?,
+        ~isOpen?,
+        ~disabled?,
+        ~hideArrow?,
+        ~className?,
+        ~innerClassName?,
+        ~cssModule?,
+        ~toggle?,
+        ~autohide?,
+        ~placementPrefix?,
+        ~delay?,
+        ~modifiers?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};

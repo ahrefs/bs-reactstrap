@@ -14,8 +14,53 @@ external make:
     ~cssModule: 'c=?,
     ~toggleable: 'd=?,
     ~expand: 'e=?,
-    ~children: React.element=?,
+    ~children: React.element,
     unit
   ) =>
   React.element =
   "Navbar";
+
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
+
+  let make =
+      (
+        ~light=?,
+        ~dark=?,
+        ~inverse=?,
+        ~full=?,
+        ~fixed=?,
+        ~sticky=?,
+        ~color=?,
+        ~role=?,
+        ~tag=?,
+        ~className=?,
+        ~cssModule=?,
+        ~toggleable=?,
+        ~expand=?,
+        children,
+      ) => {
+    let children = React.array(children);
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~light?,
+        ~dark?,
+        ~inverse?,
+        ~full?,
+        ~fixed?,
+        ~sticky?,
+        ~color?,
+        ~role?,
+        ~tag?,
+        ~className?,
+        ~cssModule?,
+        ~toggleable?,
+        ~expand?,
+        ~children,
+        (),
+      ),
+      children,
+    );
+  };
+};
