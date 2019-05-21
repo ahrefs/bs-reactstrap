@@ -1,59 +1,62 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
   (
-    ~active: bool=?,
-    ~block: bool=?,
-    ~color: string=?,
     ~disabled: bool=?,
-    ~outline: bool=?,
-    ~tag: 'a=?,
-    ~id: string=?,
-    ~innerRef: 'b=?,
-    ~onClick: 'c=?,
+    ~dropup: 'a=?,
+    ~direction: 'b=?,
+    ~isOpen: bool=?,
+    ~nav: bool=?,
+    ~active: bool=?,
+    ~addonType: 'c=?,
     ~size: string=?,
+    ~tag: string=?,
+    ~toggle: 'd=?,
     ~className: string=?,
-    ~cssModule: 'd=?,
+    ~cssModule: 'e=?,
+    ~inNavbar: bool=?,
     ~children: React.element,
     unit
   ) =>
   React.element =
-  "Button";
+  "ButtonDropdown";
 
 module Jsx2 = {
   let component = ReasonReact.statelessComponent(__MODULE__);
 
   let make =
       (
-        ~active=?,
-        ~block=?,
-        ~color=?,
         ~disabled=?,
-        ~outline=?,
-        ~tag=?,
-        ~id=?,
-        ~innerRef=?,
-        ~onClick=?,
+        ~dropup=?,
+        ~direction=?,
+        ~isOpen=?,
+        ~nav=?,
+        ~active=?,
+        ~addonType=?,
         ~size=?,
+        ~tag=?,
+        ~toggle=?,
         ~className=?,
         ~cssModule=?,
+        ~inNavbar=?,
         children,
       ) => {
     let children = React.array(children);
     ReasonReactCompat.wrapReactForReasonReact(
       make,
       makeProps(
-        ~active?,
-        ~block?,
-        ~color?,
         ~disabled?,
-        ~outline?,
-        ~tag?,
-        ~id?,
-        ~innerRef?,
-        ~onClick?,
+        ~dropup?,
+        ~direction?,
+        ~isOpen?,
+        ~nav?,
+        ~active?,
+        ~addonType?,
         ~size?,
+        ~tag?,
+        ~toggle?,
         ~className?,
         ~cssModule?,
+        ~inNavbar?,
         ~children,
         (),
       ),

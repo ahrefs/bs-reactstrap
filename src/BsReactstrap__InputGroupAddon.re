@@ -1,16 +1,8 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
   (
-    ~active: bool=?,
-    ~block: bool=?,
-    ~color: string=?,
-    ~disabled: bool=?,
-    ~outline: bool=?,
     ~tag: 'a=?,
-    ~id: string=?,
-    ~innerRef: 'b=?,
-    ~onClick: 'c=?,
-    ~size: string=?,
+    ~addonType: 'a,
     ~className: string=?,
     ~cssModule: 'd=?,
     ~children: React.element,
@@ -24,16 +16,8 @@ module Jsx2 = {
 
   let make =
       (
-        ~active=?,
-        ~block=?,
-        ~color=?,
-        ~disabled=?,
-        ~outline=?,
         ~tag=?,
-        ~id=?,
-        ~innerRef=?,
-        ~onClick=?,
-        ~size=?,
+        ~addonType=?,
         ~className=?,
         ~cssModule=?,
         children,
@@ -42,16 +26,8 @@ module Jsx2 = {
     ReasonReactCompat.wrapReactForReasonReact(
       make,
       makeProps(
-        ~active?,
-        ~block?,
-        ~color?,
-        ~disabled?,
-        ~outline?,
         ~tag?,
-        ~id?,
-        ~innerRef?,
-        ~onClick?,
-        ~size?,
+        ~addonType?,
         ~className?,
         ~cssModule?,
         ~children,
