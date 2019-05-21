@@ -1,40 +1,26 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
   (
-    ~active: bool=?,
-    ~block: bool=?,
-    ~color: string=?,
-    ~disabled: bool=?,
-    ~outline: bool=?,
     ~tag: 'a=?,
-    ~id: string=?,
-    ~innerRef: 'b=?,
-    ~onClick: 'c=?,
-    ~size: string=?,
+    ~listTag:'b=?,
     ~className: string=?,
-    ~cssModule: 'd=?,
+    ~listClassName: string=?,
+    ~cssModule: 'c=?,
     ~children: React.element,
     unit
   ) =>
   React.element =
-  "Button";
+  "Breadcrumb";
 
 module Jsx2 = {
   let component = ReasonReact.statelessComponent(__MODULE__);
 
   let make =
       (
-        ~active=?,
-        ~block=?,
-        ~color=?,
-        ~disabled=?,
-        ~outline=?,
         ~tag=?,
-        ~id=?,
-        ~innerRef=?,
-        ~onClick=?,
-        ~size=?,
+        ~listTag=?,
         ~className=?,
+        ~listClassName=?,
         ~cssModule=?,
         children,
       ) => {
@@ -42,17 +28,10 @@ module Jsx2 = {
     ReasonReactCompat.wrapReactForReasonReact(
       make,
       makeProps(
-        ~active?,
-        ~block?,
-        ~color?,
-        ~disabled?,
-        ~outline?,
         ~tag?,
-        ~id?,
-        ~innerRef?,
-        ~onClick?,
-        ~size?,
+        ~listTag?,
         ~className?,
+        ~listClassName?,
         ~cssModule?,
         ~children,
         (),
