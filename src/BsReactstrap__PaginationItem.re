@@ -6,7 +6,7 @@ external make:
     ~cssModule: 'a=?,
     ~disabled: bool=?,
     ~tag: 'b=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

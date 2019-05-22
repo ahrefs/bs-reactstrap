@@ -5,7 +5,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'a=?,
     ~valid: bool=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

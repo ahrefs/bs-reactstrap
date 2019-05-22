@@ -8,7 +8,7 @@ external make:
     ~action: bool=?,
     ~className: 'b=?,
     ~cssModule: 'c=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

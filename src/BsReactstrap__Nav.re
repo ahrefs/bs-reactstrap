@@ -12,7 +12,7 @@ external make:
     ~tag: 'b=?,
     ~className: string=?,
     ~cssModule: 'c=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

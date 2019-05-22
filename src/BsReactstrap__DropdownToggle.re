@@ -11,7 +11,7 @@ external make:
     ~split: bool=?,
     ~tag: 'c=?,
     ~nav: bool=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

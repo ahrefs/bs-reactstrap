@@ -25,7 +25,7 @@ external make:
     ~zIndex: 'i=?,
     ~backdropTransition: 'j=?,
     ~modalTransition: 'k=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

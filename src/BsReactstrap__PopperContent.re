@@ -14,7 +14,7 @@ external make:
     ~container: 'd=?,
     ~target: 'e,
     ~modifiers: 'f=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

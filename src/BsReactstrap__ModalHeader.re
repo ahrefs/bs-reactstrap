@@ -7,7 +7,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'd=?,
     ~closeAriaLabel: string=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =
