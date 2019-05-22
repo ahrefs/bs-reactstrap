@@ -14,7 +14,7 @@ external make:
     ~toggle: 'e=?,
     ~delay: 'f=?,
     ~modifiers: 'g=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

@@ -4,7 +4,7 @@ external make:
     ~tag: 'a=?,
     ~className: 'b=?,
     ~cssModule: 'c=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

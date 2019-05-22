@@ -15,7 +15,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'e=?,
     ~inNavbar: bool=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

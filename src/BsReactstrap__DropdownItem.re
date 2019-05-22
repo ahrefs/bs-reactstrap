@@ -10,7 +10,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'c=?,
     ~toggle: bool=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

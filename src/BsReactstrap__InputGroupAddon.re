@@ -5,7 +5,7 @@ external make:
     ~addonType: 'a,
     ~className: string=?,
     ~cssModule: 'd=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =
@@ -17,7 +17,7 @@ module Jsx2 = {
   let make =
       (
         ~tag=?,
-        ~addonType=?,
+        ~addonType,
         ~className=?,
         ~cssModule=?,
         children,
@@ -27,7 +27,7 @@ module Jsx2 = {
       make,
       makeProps(
         ~tag?,
-        ~addonType?,
+        ~addonType,
         ~className?,
         ~cssModule?,
         ~children,

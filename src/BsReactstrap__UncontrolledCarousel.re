@@ -9,7 +9,7 @@ external make:
     ~next: 'c=?,
     ~previous: 'd=?,
     ~goToIndex: 'e=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =

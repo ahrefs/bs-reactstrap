@@ -7,7 +7,7 @@ external make:
     ~groupAttributes: 'c=?,
     ~className: string=?,
     ~cssModule: 'd=?,
-    ~children: React.element,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =
