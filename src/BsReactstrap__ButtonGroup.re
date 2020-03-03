@@ -6,7 +6,7 @@ external make:
     ~className: string=?,
     ~cssModule: 'b=?,
     ~role: string=?,
-    ~size: string=?,
+    ~size: [@bs.string] [ | `xs | `sm | `md | `lg | `xl]=?,
     ~vertical: bool=?,
     ~children: React.element=?,
     unit

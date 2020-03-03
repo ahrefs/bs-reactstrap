@@ -6,6 +6,8 @@ external make:
     ~cssModule: 'a=?,
     ~next: bool=?,
     ~previous: bool=?,
+    ~first: bool=?,
+    ~last: bool=?,
     ~tag: 'b=?,
     ~children: React.element=?,
     unit
@@ -23,6 +25,8 @@ module Jsx2 = {
         ~cssModule=?,
         ~next=?,
         ~previous=?,
+        ~first=?,
+        ~last=?,
         ~tag=?,
         children,
       ) => {
@@ -35,6 +39,8 @@ module Jsx2 = {
         ~cssModule?,
         ~next?,
         ~previous?,
+        ~first?,
+        ~last?,
         ~tag?,
         ~children,
         (),

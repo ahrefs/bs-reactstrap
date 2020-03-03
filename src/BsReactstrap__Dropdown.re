@@ -3,7 +3,7 @@ external make:
   (
     ~disabled: bool=?,
     ~dropup: 'a=?,
-    ~direction: 'b=?,
+    ~direction: [@bs.string] [ | `up | `down | `left | `right]=?,
     ~group: bool=?,
     ~isOpen: bool=?,
     ~nav: bool=?,

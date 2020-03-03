@@ -1,9 +1,20 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
   (
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `succeess
+              | `danger
+              | `warning
+              | `info
+              | `light
+              | `dark
+            ]
+              =?,
     ~pill: bool=?,
     ~tag: 'a=?,
+    ~href: string=?,
     ~className: string=?,
     ~cssModule: 'b=?,
     ~children: React.element=?,
@@ -15,7 +26,16 @@ external make:
 module Jsx2 = {
   let component = ReasonReact.statelessComponent(__MODULE__);
 
-  let make = (~color=?, ~pill=?, ~tag=?, ~className=?, ~cssModule=?, children) => {
+  let make =
+      (
+        ~color=?,
+        ~pill=?,
+        ~tag=?,
+        ~href=?,
+        ~className=?,
+        ~cssModule=?,
+        children,
+      ) => {
     let children = React.array(children);
     ReasonReactCompat.wrapReactForReasonReact(
       make,
@@ -23,6 +43,7 @@ module Jsx2 = {
         ~color?,
         ~pill?,
         ~tag?,
+        ~href?,
         ~className?,
         ~cssModule?,
         ~children,

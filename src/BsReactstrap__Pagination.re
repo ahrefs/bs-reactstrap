@@ -1,6 +1,7 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
   (
+    ~ariaLabel: string=?,
     ~className: string=?,
     ~cssModule: 'a=?,
     ~size: string=?,
@@ -14,11 +15,20 @@ external make:
 module Jsx2 = {
   let component = ReasonReact.statelessComponent(__MODULE__);
 
-  let make = (~className=?, ~cssModule=?, ~size=?, ~tag=?, children) => {
+  let make =
+      (~ariaLabel=?, ~className=?, ~cssModule=?, ~size=?, ~tag=?, children) => {
     let children = React.array(children);
     ReasonReactCompat.wrapReactForReasonReact(
       make,
-      makeProps(~className?, ~cssModule?, ~size?, ~tag?, ~children, ()),
+      makeProps(
+        ~ariaLabel?,
+        ~className?,
+        ~cssModule?,
+        ~size?,
+        ~tag?,
+        ~children,
+        (),
+      ),
       children,
     );
   };

@@ -2,7 +2,7 @@
 external make:
   (
     ~tag: 'a=?,
-    ~addonType: 'a,
+    ~addonType: [@bs.string] [ | `prepend | `append],
     ~className: string=?,
     ~cssModule: 'd=?,
     ~children: React.element=?,
@@ -14,25 +14,11 @@ external make:
 module Jsx2 = {
   let component = ReasonReact.statelessComponent(__MODULE__);
 
-  let make =
-      (
-        ~tag=?,
-        ~addonType,
-        ~className=?,
-        ~cssModule=?,
-        children,
-      ) => {
+  let make = (~tag=?, ~addonType, ~className=?, ~cssModule=?, children) => {
     let children = React.array(children);
     ReasonReactCompat.wrapReactForReasonReact(
       make,
-      makeProps(
-        ~tag?,
-        ~addonType,
-        ~className?,
-        ~cssModule?,
-        ~children,
-        (),
-      ),
+      makeProps(~tag?, ~addonType, ~className?, ~cssModule?, ~children, ()),
       children,
     );
   };

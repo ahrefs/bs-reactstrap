@@ -2,7 +2,7 @@
 external make:
   (
     ~_type: string=?,
-    ~size: string=?,
+    ~size: [@bs.string] [ | `xs | `sm | `md | `lg | `xl]=?,
     ~bsSize: string=?,
     ~state: 'a=?,
     ~valid: bool=?,
