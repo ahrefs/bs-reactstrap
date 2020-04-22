@@ -3,12 +3,22 @@ external make:
   (
     ~tag: 'a=?,
     ~inverse: bool=?,
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `success
+              | `info
+              | `warning
+              | `danger
+              | `link
+            ]
+              =?,
     ~block: 'b=?,
     ~body: bool=?,
     ~outline: bool=?,
     ~className: string=?,
     ~cssModule: 'c=?,
+    ~innerRef: 'd=?,
     ~children: React.element=?,
     unit
   ) =>
@@ -28,6 +38,7 @@ module Jsx2 = {
         ~outline=?,
         ~className=?,
         ~cssModule=?,
+        ~innerRef=?,
         children,
       ) => {
     let children = React.array(children);
@@ -42,6 +53,7 @@ module Jsx2 = {
         ~outline?,
         ~className?,
         ~cssModule?,
+        ~innerRef?,
         ~children,
         (),
       ),

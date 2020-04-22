@@ -3,14 +3,23 @@ external make:
   (
     ~active: bool=?,
     ~block: bool=?,
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `success
+              | `info
+              | `warning
+              | `danger
+              | `link
+            ]
+              =?,
     ~disabled: bool=?,
     ~outline: bool=?,
     ~tag: 'a=?,
     ~id: string=?,
     ~innerRef: 'b=?,
     ~onClick: 'c=?,
-    ~size: string=?,
+    ~size: [@bs.string] [ | `xs | `sm | `md | `lg | `xl]=?,
     ~className: string=?,
     ~cssModule: 'd=?,
     ~children: React.element=?,

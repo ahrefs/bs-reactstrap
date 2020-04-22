@@ -2,7 +2,7 @@
 external make:
   (
     ~_type: string=?,
-    ~size: string=?,
+    ~size: [@bs.string] [ | `xs | `sm | `md | `lg | `xl]=?,
     ~bsSize: string=?,
     ~state: 'a=?,
     ~valid: bool=?,
@@ -17,6 +17,7 @@ external make:
     ~onFocus: ReactEvent.Form.t => unit=?,
     ~placeholder: string=?,
     ~value: string=?,
+    ~checked: bool=?,
     ~min: float=?,
     ~max: float=?,
     ~rows: int=?,
@@ -52,6 +53,7 @@ module Jsx2 = {
         ~onFocus=?,
         ~placeholder=?,
         ~value=?,
+        ~checked=?,
         ~min=?,
         ~max=?,
         ~rows=?,
@@ -82,6 +84,7 @@ module Jsx2 = {
         ~onFocus?,
         ~placeholder?,
         ~value?,
+        ~checked?,
         ~min?,
         ~max?,
         ~rows?,

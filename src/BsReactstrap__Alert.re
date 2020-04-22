@@ -5,11 +5,21 @@ external make:
     ~closeClassName: string=?,
     ~closeAriaLabel: string=?,
     ~cssModule: 'a=?,
-    ~color: string=?,
+    ~color: [@bs.string] [
+              | `primary
+              | `secondary
+              | `success
+              | `info
+              | `warning
+              | `danger
+              | `link
+            ]
+              =?,
     ~isOpen: bool=?,
     ~toggle: 'b=?,
     ~tag: 'c=?,
     ~transition: 'd=?,
+    ~fade: bool=?,
     ~children: React.element=?,
     unit
   ) =>
@@ -30,6 +40,7 @@ module Jsx2 = {
         ~toggle=?,
         ~tag=?,
         ~transition=?,
+        ~fade=?,
         children,
       ) => {
     let children = React.array(children);
@@ -45,6 +56,7 @@ module Jsx2 = {
         ~toggle?,
         ~tag?,
         ~transition?,
+        ~fade?,
         ~children,
         (),
       ),

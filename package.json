@@ -1,13 +1,13 @@
 {
-  "name": "@ahrefs/bs-reactstrap",
+  "name": "@bste/bs-reactstrap",
   "version": "1.0.3",
   "description": "Bucklescript bindings for Reactstrap",
-  "homepage": "https://github.com/ahrefs/bs-reactstrap#readme",
-  "repository": "git@github.com:ahrefs/bs-reactstrap.git",
+  "homepage": "https://github.com/benjstephenson/bs-reactstrap#readme",
+  "repository": "git@github.com:benjstephenson/bs-reactstrap.git",
   "bugs": {
-    "url": "https://github.com/ahrefs/bs-reactstrap/issues"
+    "url": "https://github.com/benjstephenson/bs-reactstrap/issues"
   },
-  "author": "ahrefs",
+  "author": "bste",
   "license": "MIT",
   "keywords": [
     "reactstrap",
@@ -22,7 +22,7 @@
     "reasonml"
   ],
   "devDependencies": {
-    "bs-platform": "^5.0.3",
+    "bs-platform": "^6.2.0",
     "reason-react": "^0.7.0"
   },
   "dependencies": {

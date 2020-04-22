@@ -1,6 +1,11 @@
 [@bs.module "reactstrap"] [@react.component]
 external make:
-  (~addonType: 'a, ~children: React.element=?, unit) => React.element =
+  (
+    ~addonType: [@bs.string] [ | `prepend | `append],
+    ~children: React.element=?,
+    unit
+  ) =>
+  React.element =
   "InputGroupButtonDropdown";
 
 module Jsx2 = {
